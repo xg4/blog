@@ -1,10 +1,12 @@
 # git
 
+> [廖雪峰git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+
 - <a href="#local">本地设置</a>
 
 - <a href="#ssh">连接GitHub</a>
 
-- <a href="#remote">添加远程库</a>
+- <a href="#addRemote">添加远程库</a>
 
 - <a href="#clone">从远程库中克隆</a>
 
@@ -27,6 +29,10 @@
 - <a href="#tag">tag</a>
 
 - <a href="#command">命令行</a>
+
+- <a href="#ignore">忽略特殊文件</a>
+
+- <a href="#alias">配置别名</a>
 
 <p id="local"></p>
 
@@ -53,7 +59,7 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 > **检验是否连接上GitHub `$ ssh git@github.com`**
 
-<p id="remote"></p>
+<p id="addRemote"></p>
 
 ## # 添加远程库
 
@@ -82,11 +88,7 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 `$ git add <filename>` : 添加文件到暂存区
 或 `$ git add .` ：. 表示整个目录
 
-`$ git commit -m "commmit msg"` : 提交文件到仓库
-
-`$ git remote add origin git` : 连接GitHub仓库
-
-`$ git push -u origin master`：上传到GitHub
+`$ git commit -m "commit msg"` : 提交文件到仓库
 
 <p id="modify"></p>
 
@@ -100,6 +102,8 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 ## # 版本回退
 
 - `$ git log`：显示从最近到最远的提交日志。
+
+**英文状态下按Q,退出log**
 
 - `$ git log --pretty=oneline`：显示简要版的提交日志。
 
@@ -175,27 +179,30 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
     - 用 `$ git stash pop` ，恢复的同时把stash内容也删了。
 
+- 你可以多次stash，恢复的时候，先用`git stash list`查看，然后恢复指定的stash，用命令：`$ git stash apply stash@{0}`
+
 <p id="remote"></p>
 
 ## # remote
 
 - 查看远程库信息，使用 `$ git remote -v`；
 
-- 从本地推送分支，使用 `$ git push origin branch-name`，如果推送失败，先用 `$ git pull`抓取远程的新提交；
+- 在本地创建和远程分支对应的分支，使用 `git checkout -b branch-name origin/branch-name` ，本地和远程分支的名称最好一致；
 
-- 在本地创建和远程分支对应的分支，使用 `$ git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
+1. 从本地推送分支，使用 `$ git push origin branch-name`，如果推送失败，先用 `$ git pull` 试图合并；
 
-- 建立本地分支和远程分支的关联，使用 `$ git branch --set-upstream branch-name origin/branch-name`；
+2. 如果合并有冲突，则解决冲突，并在本地提交；
 
-- 从远程抓取分支，使用 `$ git pull`，如果有冲突，要先处理冲突。
+3. 没有冲突或者解决掉冲突后，再用 `git push origin branch-name` 推送就能成功！
+
+**如果`git pull`提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令 `git branch --set-upstream branch-name origin/branch-name` 。**
 
 <p id="tag"></p>
 
 ## # tag
 
-> Git的标签就像是版本库的快照，实质上它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。
-
-> 作用在于将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。
+> Git的标签就像是版本库的快照，实质上它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。  
+作用在于将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。
 
 - `$ git tag <name>`：创建一个新标签。
     - 命令`$ git tag <name>`用于新建一个标签，默认为HEAD，也可以指定一个commit id；
@@ -219,6 +226,40 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 - 命令`$ git tag -d <tagname>`可以删除一个本地标签；
 
 - 命令`$ git push origin :refs/tags/<tagname>`可以删除一个远程标签。
+
+<p id="ignore"></p>
+
+## # ignore
+
+- 有些时候，你想添加一个文件到Git，但发现添加不了，原因是这个文件被.gitignore忽略了：
+
+- 如果你确实想添加该文件，可以用`-f`强制添加到Git：
+
+`$ git add -f <name>`
+
+- 或者你发现，可能是.gitignore写得有问题，需要找出来到底哪个规则写错了，可以用`$ git check-ignore`命令检查：
+
+```
+$ git check-ignore -v App.class
+.gitignore:3:*.class    App.class
+```
+
+<p id="alias"></p>
+
+## # 配置别名
+
+```
+$ git config --global alias.st status
+$ git config --global alias.ck checkout
+$ git config --global alias.cm commit
+$ git config --global alias.br branch
+```
+
+- 配置一个`$ git last`，让其显示最后一次提交信息：
+
+```
+$ git config --global alias.last 'log -1'
+```
 
 <p id="command"></p>
 

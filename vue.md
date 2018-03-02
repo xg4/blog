@@ -1,17 +1,92 @@
 # vue-notebook
 
 - <a href="#vue">vue</a>
+  - <a href="#plugin">插件</a>
+  - <a href="#directive">自定义指令</a>
+  - <a href="#sync">.sync</a>
+  - <a href="#keepAlive">keep-alive</a>
   - <a href="#watch">watch</a>
   - <a href="#extend">Vue.extend</a>
   - <a href="#slot">组件插槽</a>
   - <a href="#lazyLoading">懒加载</a>
   - <a href="#lazyImg">图片懒加载</a>
+  - <a href="#ref">ref</a>
 - <a href="#vueRouter">vue-router</a>
+  - <a href="#meta">路由元信息</a>
   - <a href="#guards">路由守卫</a>
 
 <p id="vue"><p>
 
 # vue
+
+> [官方文档](https://cn.vuejs.org/)
+
+<p id="plugin"></p>
+
+## # [插件](https://cn.vuejs.org/v2/guide/plugins.html)
+
+- Vue.js 的插件应当有一个公开方法 install 。这个方法的第一个参数是 Vue 构造器，第二个参数是一个可选的选项对象：
+
+```js
+MyPlugin.install = function (Vue, options) {
+  // 1. 添加全局方法或属性
+  Vue.myGlobalMethod = function () {
+    // 逻辑...
+  }
+
+  // 2. 添加全局资源
+  Vue.directive('my-directive', {
+    bind (el, binding, vnode, oldVnode) {
+      // 逻辑...
+    }
+    ...
+  })
+
+  // 3. 注入组件
+  Vue.mixin({
+    created: function () {
+      // 逻辑...
+    }
+    ...
+  })
+
+  // 4. 添加实例方法
+  Vue.prototype.$myMethod = function (methodOptions) {
+    // 逻辑...
+  }
+}
+```
+
+<p id="directive"></p>
+
+## # [自定义指令](https://cn.vuejs.org/v2/guide/custom-directive.html)
+
+```js
+// 注册一个全局自定义指令 `v-focus`
+Vue.directive('focus', {
+  // 当被绑定的元素插入到 DOM 中时……
+  inserted: function (el) {
+    // 聚焦元素
+    el.focus()
+  }
+})
+```
+
+- `inserted` ：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
+
+<p id="sync"></p>
+
+## # [.sync 修饰符](https://cn.vuejs.org/v2/guide/components.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6)
+
+-  prop 进行“双向绑定”。
+
+<p id="keepAlive"></p>
+
+## # [keep-alive](https://cn.vuejs.org/v2/api/#keep-alive)
+
+- 当组件在 <keep-alive> 内被切换，它的 activated 和 deactivated 这两个生命周期钩子函数将会被对应执行。
+
+- 主要用于保留组件状态或避免重新渲染。
 
 <p id="watch"><p>
 
@@ -145,9 +220,40 @@ Webpack 会将任何一个异步模块与相同的块名称组合到相同的异
 
 > [vue-lazyload](https://github.com/hilongjw/vue-lazyload)
 
+## # [ref](https://cn.vuejs.org/v2/api/#ref)
+
+ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 `$refs` 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例
+
 <p id="vueRouter"></p>
 
 # vue-router
+
+> [官方文档](https://router.vuejs.org/zh-cn/)
+
+<p id="meta"></p>
+
+## # [路由元信息](https://router.vuejs.org/zh-cn/advanced/meta.html)
+
+- 定义路由的时候可以配置 meta 字段：
+
+```js
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/foo',
+      component: Foo,
+      children: [
+        {
+          path: 'bar',
+          component: Bar,
+          // a meta field
+          meta: { requiresAuth: true }
+        }
+      ]
+    }
+  ]
+})
+```
 
 <p id="guards"></p>
 
