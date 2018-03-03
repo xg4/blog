@@ -1,10 +1,10 @@
 # css
 
-> [Flex 布局教程：语法篇 - 阮一峰](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+- [Flex布局](#flex)
 
-- <a href="#flex">Flex布局</a>
+    > [Flex 布局教程：语法篇 - 阮一峰](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
-- <a href="#overflow">超出部分显示省略号</a>
+- [超出部分显示省略号](#overflow)
 
 <p id="flex"></p>
 

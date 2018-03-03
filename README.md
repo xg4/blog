@@ -1,6 +1,6 @@
 # notebook
 
-learning
+:notebook: learning
 
 - [vue](./vue.md)
 

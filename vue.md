@@ -1,19 +1,19 @@
 # vue-notebook
 
-- <a href="#vue">vue</a>
-  - <a href="#plugin">插件</a>
-  - <a href="#directive">自定义指令</a>
-  - <a href="#sync">.sync</a>
-  - <a href="#keepAlive">keep-alive</a>
-  - <a href="#watch">watch</a>
-  - <a href="#extend">Vue.extend</a>
-  - <a href="#slot">组件插槽</a>
-  - <a href="#lazyLoading">懒加载</a>
-  - <a href="#lazyImg">图片懒加载</a>
-  - <a href="#ref">ref</a>
-- <a href="#vueRouter">vue-router</a>
-  - <a href="#meta">路由元信息</a>
-  - <a href="#guards">路由守卫</a>
+- [vue](#vue)
+  - [插件](#plugin)
+  - [自定义指令](#directive)
+  - [.sync](#sync)
+  - [keep-alive](#keep-alive)
+  - [watch](#watch)
+  - [Vue.extend](#extend)
+  - [组件插槽](#slot)
+  - [懒加载](#lazyLoading)
+  - [图片懒加载](#lazyImg)
+  - [ref](#ref)
+- [vue-router](#vueRouter)
+  - [路由元信息](#meta)
+  - [路由守卫](#guards)
 
 <p id="vue"><p>
 
@@ -80,7 +80,7 @@ Vue.directive('focus', {
 
 -  prop 进行“双向绑定”。
 
-<p id="keepAlive"></p>
+<p id="keep-alive"></p>
 
 ## # [keep-alive](https://cn.vuejs.org/v2/api/#keep-alive)
 

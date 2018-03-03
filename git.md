@@ -2,37 +2,35 @@
 
 > [廖雪峰git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
-- <a href="#local">本地设置</a>
+- [本地设置](#local)
 
-- <a href="#ssh">连接GitHub</a>
+- [初始化](#init)
 
-- <a href="#addRemote">添加远程库</a>
+- [修改内容](#modify)
 
-- <a href="#clone">从远程库中克隆</a>
+- [版本回退](#reset)
 
-- <a href="#init">初始化</a>
+- [撤销修改](#back)
 
-- <a href="#modify">修改内容</a>
+- [删除文件](#delete)
 
-- <a href="#reset">版本回退</a>
+- [分支管理](#branch)
 
-- <a href="#back">撤销修改</a>
+- [stash](#stash)
 
-- <a href="#delete">删除文件</a>
+- [连接GitHub](#ssh)
 
-- <a href="#branch">分支管理</a>
+- [远程仓库](#remote)
 
-- <a href="#stash">BUG分支</a>
+- [从远程库中克隆](#clone)
 
-- <a href="#remote">远程仓库</a>
+- [标签](#tag)
 
-- <a href="#tag">tag</a>
+- [命令行](#command)
 
-- <a href="#command">命令行</a>
+- [忽略特殊文件](#ignore)
 
-- <a href="#ignore">忽略特殊文件</a>
-
-- <a href="#alias">配置别名</a>
+- [配置别名](#alias)
 
 <p id="local"></p>
 
@@ -42,42 +40,6 @@
 $ git config --global user.name "xg4"
 $ git config --global user.email xingor4@gmail.com
 ```
-
-<p id="ssh"></p>
-
-## # 连接GitHub
-
-```git
-$ ssh-keygen -t rsa -C "xingor4@gmail.com"
-```
-
-- 用户主目录下找到.ssh目录，id_rsa和id_rsa.pub两个文件。
-
-- id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
-
-- GitHub “Add SSH Key” 粘贴id_rsa.pub文件的内容。
-
-> **检验是否连接上GitHub `$ ssh git@github.com`**
-
-<p id="addRemote"></p>
-
-## # 添加远程库
-
-1. 关联远程库，使用命令`$ git remote add origin git@server-name:path/repo-name.git`。
-2. 关联后，使用命令`$ git push -u origin master`第一次推送master分支的所有内容。(第一次要用-u,以后不需要)
-3. 此后，每次本地提交后，只要有必要，就可以使用命令`$ git push origin master`推送最新修改。
-
-
-<p id="clone"></p>
-
-## # 从远程库中克隆
-
-- 克隆一个远程库：`$ git clone git@github.com:servername/gitskills.git`
-
-    - GitHub给出的地址不止一个，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。
-
-    - 使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。
-
 
 <p id="init"></p>
 
@@ -103,13 +65,17 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 - `$ git log`：显示从最近到最远的提交日志。
 
-**英文状态下按Q,退出log**
+    - **英文状态下按Q，退出log**
 
 - `$ git log --pretty=oneline`：显示简要版的提交日志。
 
 - `$ git reset --hard HEAD^` : 返回上一个版本，`HEAD`表示当前版本，`HEAD^^`表示上上个版本,也可以用类似于`HEAD~3`来表示要回退到哪一个版本。
 
 - `$ git reset --hard 3628164` : 后面的数字是版本号，此方法可以随意跳转。
+
+- `$ git push -f`：强制推送到远程分支
+
+    - 注意：本地分支回滚后，版本将落后远程分支，必须使用强制推送覆盖远程分支，否则无法推送到远程分支
 
 - `$ git reflog`：记录所有的操作,可以通过此查询版本号。
 
@@ -181,9 +147,33 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 - 你可以多次stash，恢复的时候，先用`git stash list`查看，然后恢复指定的stash，用命令：`$ git stash apply stash@{0}`
 
+<p id="ssh"></p>
+
+## # 连接GitHub
+
+```git
+$ ssh-keygen -t rsa -C "xingor4@gmail.com"
+```
+
+- 用户主目录下找到.ssh目录，id_rsa和id_rsa.pub两个文件。
+
+- id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。
+
+- GitHub “Add SSH Key” 粘贴id_rsa.pub文件的内容。
+
+> **检验是否连接上GitHub `$ ssh git@github.com`**
+
 <p id="remote"></p>
 
-## # remote
+## # 远程仓库
+
+- 添加远程库
+
+    1. 关联远程库，使用命令`$ git remote add origin git@server-name:path/repo-name.git`。
+
+    2. 关联后，使用命令`$ git push -u origin master`第一次推送master分支的所有内容。(第一次要用-u,以后不需要)
+
+    3. 此后，每次本地提交后，只要有必要，就可以使用命令`$ git push origin master`推送最新修改。
 
 - 查看远程库信息，使用 `$ git remote -v`；
 
@@ -197,9 +187,19 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 **如果`git pull`提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令 `git branch --set-upstream branch-name origin/branch-name` 。**
 
+<p id="clone"></p>
+
+## # 从远程库中克隆
+
+- 克隆一个远程库：`$ git clone git@github.com:servername/gitskills.git`
+
+    - GitHub给出的地址不止一个，Git支持多种协议，默认的git://使用ssh，但也可以使用https等其他协议。
+
+    - 使用https除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放http端口的公司内部就无法使用ssh协议而只能用https。
+
 <p id="tag"></p>
 
-## # tag
+## # 标签
 
 > Git的标签就像是版本库的快照，实质上它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。  
 作用在于将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。
