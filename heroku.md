@@ -9,11 +9,20 @@
     Git remote heroku added
     ```
 
+```bash
+$ git init
+$ heroku git:remote -a <name>
+
+$ git add .
+$ git commit -m 'cm msg'
+$ git push heroku master
+```
+
 - 当您创建应用程序时，heroku还会创建一个git remote（调用）并将其与本地git存储库关联。
 
-Heroku会sharp-rain-871为您的应用程序生成一个随机名称（在这种情况下），或者您可以传递一个参数来指定您自己的应用程序名称。
+    Heroku会sharp-rain-871为您的应用程序生成一个随机名称（在这种情况下），或者您可以传递一个参数来指定您自己的应用程序名称。
 
-现在部署你的代码：
+    现在部署你的代码：
 
     ```bash
     $ git push heroku master
