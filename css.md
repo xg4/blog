@@ -1,10 +1,41 @@
 # css
 
+- [英文换行](#word-break)
+
 - [Flex布局](#flex)
 
     > [Flex 布局教程：语法篇 - 阮一峰](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
 
 - [超出部分显示省略号](#overflow)
+
+<p id="word-break"></p>
+
+## # 英文换行
+
+- 强制不换行
+
+    ```css
+    { 
+        white-space:nowrap; 
+    } 
+    ```
+
+- 自动换行
+
+    ```css
+    { 
+        word-wrap: break-word; 
+        word-break: normal; 
+    } 
+    ```
+
+- 强制英文单词断行
+
+    ```css
+    { 
+        word-break:break-all; 
+    } 
+    ```
 
 <p id="flex"></p>
 
