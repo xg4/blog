@@ -64,9 +64,9 @@ MyPlugin.install = function (Vue, options) {
 
 ```js
 // 注册一个全局自定义指令 `v-focus`
-Vue.directive('focus', {
+Vue.directive("focus", {
   // 当被绑定的元素插入到 DOM 中时……
-  inserted: function (el) {
+  inserted: function(el) {
     // 聚焦元素
     el.focus()
   }
@@ -79,7 +79,7 @@ Vue.directive('focus', {
 
 ## # [.sync 修饰符](https://cn.vuejs.org/v2/guide/components.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6)
 
--  prop 进行“双向绑定”。
+- prop 进行“双向绑定”。
 
 <p id="keep-alive"></p>
 
@@ -94,7 +94,7 @@ Vue.directive('focus', {
 ## # watch
 
 - [vm-$watch](https://cn.vuejs.org/v2/api/#vm-watch)
-    - `deep: true` 监听对象内部值的变化 
+  - `deep: true` 监听对象内部值的变化
 
 ```
 vm.$watch('someObject', callback, {
@@ -120,27 +120,37 @@ var vm = new Vue({
     }
   },
   watch: {
-    a: function (val, oldVal) {
-      console.log('new: %s, old: %s', val, oldVal)
+    a: function(val, oldVal) {
+      console.log("new: %s, old: %s", val, oldVal)
     },
     // 方法名
-    b: 'someMethod',
+    b: "someMethod",
     // 深度 watcher
     c: {
-      handler: function (val, oldVal) { /* ... */ },
+      handler: function(val, oldVal) {
+        /* ... */
+      },
       deep: true
     },
     // 该回调将会在侦听开始之后被立即调用
     d: {
-      handler: function (val, oldVal) { /* ... */ },
+      handler: function(val, oldVal) {
+        /* ... */
+      },
       immediate: true
     },
     e: [
-      function handle1 (val, oldVal) { /* ... */ },
-      function handle2 (val, oldVal) { /* ... */ }
+      function handle1(val, oldVal) {
+        /* ... */
+      },
+      function handle2(val, oldVal) {
+        /* ... */
+      }
     ],
     // watch vm.e.f's value: {g: 5}
-    'e.f': function (val, oldVal) { /* ... */ }
+    "e.f": function(val, oldVal) {
+      /* ... */
+    }
   }
 })
 vm.a = 2 // => new: 2, old: 1
@@ -152,29 +162,36 @@ vm.a = 2 // => new: 2, old: 1
 
 ```js
 // 注册组件，传入一个扩展过的构造器
-Vue.component('my-component', Vue.extend({ /* ... */ }))
+Vue.component(
+  "my-component",
+  Vue.extend({
+    /* ... */
+  })
+)
 
 // 注册组件，传入一个选项对象 (自动调用 Vue.extend)
-Vue.component('my-component', { /* ... */ })
+Vue.component("my-component", {
+  /* ... */
+})
 
 // 获取注册的组件 (始终返回构造器)
-var MyComponent = Vue.component('my-component')
+var MyComponent = Vue.component("my-component")
 ```
 
 ```js
 var MyComponent = Vue.extend({
-  template: '<div>Hello!</div>'
+  template: "<div>Hello!</div>"
 })
 
 // 创建并挂载到 #app (会替换 #app)
-new MyComponent().$mount('#app')
+new MyComponent().$mount("#app")
 
 // 同上
-new MyComponent({ el: '#app' })
+new MyComponent({ el: "#app" })
 
 // 或者，在文档之外渲染并且随后挂载
 var component = new MyComponent().$mount()
-document.getElementById('app').appendChild(component.$el)
+document.getElementById("app").appendChild(component.$el)
 ```
 
 <p id="slot"></p>
@@ -194,12 +211,10 @@ document.getElementById('app').appendChild(component.$el)
 - 定义一个被 Webpack 自动代码分割的异步组件。
 
 ```js
-const Foo = () => import('./Foo.vue')
+const Foo = () => import("./Foo.vue")
 
 const router = new VueRouter({
-    routes: [
-        { path: '/foo', component: Foo }
-    ]
+  routes: [{ path: "/foo", component: Foo }]
 })
 ```
 
@@ -208,9 +223,9 @@ const router = new VueRouter({
 有时候我们想把某个路由下的所有组件都打包在同个异步块 (chunk) 中。只需要使用 命名 chunk，一个特殊的注释语法来提供 chunk name (需要 Webpack > 2.4)。
 
 ```js
-const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue')
-const Bar = () => import(/* webpackChunkName: "group-foo" */ './Bar.vue')
-const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue')
+const Foo = () => import(/* webpackChunkName: "group-foo" */ "./Foo.vue")
+const Bar = () => import(/* webpackChunkName: "group-foo" */ "./Bar.vue")
+const Baz = () => import(/* webpackChunkName: "group-foo" */ "./Baz.vue")
 ```
 
 Webpack 会将任何一个异步模块与相同的块名称组合到相同的异步块中。
@@ -241,11 +256,11 @@ ref 被用来给元素或子组件注册引用信息。引用信息将会注册�
 const router = new VueRouter({
   routes: [
     {
-      path: '/foo',
+      path: "/foo",
       component: Foo,
       children: [
         {
-          path: 'bar',
+          path: "bar",
           component: Bar,
           // a meta field
           meta: { requiresAuth: true }
@@ -271,17 +286,16 @@ router.beforeEach((to, from, next) => {
 - to: Route: 即将要进入的目标 路由对象
 - from: Route: 当前导航正要离开的路由
 - next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。
-    - next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed （确认的）。
-    - next(false): 中断当前的导航。如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 from 路由对应的地址。
-    - next('/') 或者 next({ path: '/' }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向 next 传递任意位置对象，且允许设置诸如 replace: true、name: 'home' 之类的选项以及任何用在 router-link 的 to prop 或 router.push 中的选项。
-    - next(error): (2.4.0+) 如果传入 next 的参数是一个 Error 实例，则导航会被终止且该错误会被传递给 router.onError() 注册过的回调。
-    
+  - next(): 进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed （确认的）。
+  - next(false): 中断当前的导航。如果浏览器的 URL 改变了（可能是用户手动或者浏览器后退按钮），那么 URL 地址会重置到 from 路由对应的地址。
+  - next('/') 或者 next({ path: '/' }): 跳转到一个不同的地址。当前的导航被中断，然后进行一个新的导航。你可以向 next 传递任意位置对象，且允许设置诸如 replace: true、name: 'home' 之类的选项以及任何用在 router-link 的 to prop 或 router.push 中的选项。
+  - next(error): (2.4.0+) 如果传入 next 的参数是一个 Error 实例，则导航会被终止且该错误会被传递给 router.onError() 注册过的回调。
+
 <p id="navigation"></p>
 
 ## # [编程式的导航](https://router.vuejs.org/zh-cn/essentials/navigation.html)
 
-- 
-  ```js
+- ```js
   router.push(location, onComplete?, onAbort?)
   ```
 

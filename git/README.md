@@ -144,7 +144,7 @@ $ git config --global user.email xingor4@gmail.com
 
 ## github
 
-```git
+```bash
 $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 ```
 
