@@ -4,9 +4,11 @@
 
 - [vue](./vue.md)
 
-- [git](./git.md)
+- [git](./git/README.md)
 
-  - [emojis](./git/emoji.md)
+  - [commit message](./git/msg.md)
+
+  - [github emojis](./git/emoji.md)
 
 - [css](./css.md)
 

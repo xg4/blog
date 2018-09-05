@@ -2,71 +2,67 @@
 
 > [廖雪峰 git 教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
-- [本地设置](#本地配置)
+## other
 
-- [初始化](#init)
+- [github emoji](./emoji.md)
 
-- [修改内容](#modify)
+- [commit message](./msg.md)
 
-- [版本回退](#reset)
+## context
 
-- [撤销修改](#back)
+- [local config](#local-config)
 
-- [删除文件](#delete)
+- [init](#init)
 
-- [分支管理](#branch)
+- [status](#status)
 
-- [stash](#stash)
+- [reset HEAD](#reset)
 
-- [连接 GitHub](#ssh)
+- [checkout file](#checkout)
 
-- [远程仓库](#remote)
+- [remove](#remove)
 
-- [从远程库中克隆](#clone)
+- [branch](#branch)
 
-- [标签](#tag)
+- [stash(bug branch)](#stash)
 
-- [命令行](#command)
+- [github](#github)
 
-- [忽略特殊文件](#ignore)
+- [remote repo](#remote-repo)
 
-- [配置别名](#alias)
+- [clone](#clone)
 
-# git commit message
+- [tag](#tag)
 
-- [commit message](#cm-msg)
+- [ignore](#ignore)
 
-## # 本地配置
+- [alias](#alias)
 
-```git
+## local config
+
+```bash
 $ git config --global user.name "xg4"
 $ git config --global user.email xingor4@gmail.com
 ```
 
-<p id="init"></p>
+## init
 
-## # 初始化
+1. `$ git init` : 初始化 git 仓库
 
-`$ git init` : 初始化 git 仓库
+2. `$ git add <filename>` : 添加文件到暂存区  
+   `$ git add .` : . 表示整个目录
 
-`$ git add <filename>` : 添加文件到暂存区
-或 `$ git add .` ：. 表示整个目录
+3. `$ git commit -m "commit msg"` : 提交文件到仓库
 
-`$ git commit -m "commit msg"` : 提交文件到仓库
+## status
 
-<p id="modify"></p>
+- `$ git status` : 查看工作区的状态。
 
-## # 修改内容
+- `$ git diff` : 查看修改内容。差异比较
 
-- `$ git status`：查看工作区的状态。
+## reset
 
-- `$ git diff`：查看修改内容。差异比较
-
-<p id="reset"></p>
-
-## # 版本回退
-
-- `$ git log`：显示从最近到最远的提交日志。
+- `$ git log` : 显示从最近到最远的提交日志。
 
   - **英文状态下按 Q，退出 log**
 
@@ -82,9 +78,7 @@ $ git config --global user.email xingor4@gmail.com
 
 - `$ git reflog`：记录所有的操作,可以通过此查询版本号。
 
-<p id="back"></p>
-
-## # 撤销修改
+## checkout
 
 - **场景 1：** 当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令`$ git checkout -- file`。
 
@@ -94,22 +88,21 @@ $ git config --global user.email xingor4@gmail.com
 
 > `$ git checkout` 其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
 
-<p id="delete"></p>
-
-## # 删除文件
+## remove
 
 - 删除文件的两种方法：
 
   - 直接从本地删除
+
   - 使用 `$ rm test.txt`
 
 - 删除之后会出现两种情况：
+
   - 从版本库恢复：`$ git checkout -- test.txt`
+
   - 从版本库也删除：`$ git rm test.txt` 然后 `$ git commit`
 
-<p id="branch"></p>
-
-## # 分支管理
+## branch
 
 - 查看分支：`$ git branch`
 
@@ -133,9 +126,7 @@ $ git config --global user.email xingor4@gmail.com
 
 - 当要删除一个没被合并的分支时，系统会提醒，如果要删除需要强制删除，需要执行命令： `$ git branch -D <name>`
 
-<p id="stash"></p>
-
-## # stash(BUG 分支)
+## stash
 
 - `$ git stash` 功能：可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。
 
@@ -151,9 +142,7 @@ $ git config --global user.email xingor4@gmail.com
 
 - 你可以多次 stash，恢复的时候，先用`git stash list`查看，然后恢复指定的 stash，用命令：`$ git stash apply stash@{0}`
 
-<p id="ssh"></p>
-
-## # 连接 GitHub
+## github
 
 ```git
 $ ssh-keygen -t rsa -C "xingor4@gmail.com"
@@ -167,9 +156,7 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 > **检验是否连接上 GitHub `$ ssh git@github.com`**
 
-<p id="remote"></p>
-
-## # 远程仓库
+## remote repo
 
 - 添加远程库
 
@@ -191,9 +178,7 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 **如果`git pull`提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令 `git branch --set-upstream branch-name origin/branch-name` 。**
 
-<p id="clone"></p>
-
-## # 从远程库中克隆
+## clone
 
 - 克隆一个远程库：`$ git clone git@github.com:servername/gitskills.git`
 
@@ -201,9 +186,7 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
   - 使用 https 除了速度慢以外，还有个最大的麻烦是每次推送都必须输入口令，但是在某些只开放 http 端口的公司内部就无法使用 ssh 协议而只能用 https。
 
-<p id="tag"></p>
-
-## # 标签
+## tag
 
 > Git 的标签就像是版本库的快照，实质上它就是指向某个 commit 的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。  
 > 作用在于将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。
@@ -232,9 +215,7 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 - 命令`$ git push origin :refs/tags/<tagname>`可以删除一个远程标签。
 
-<p id="ignore"></p>
-
-## # ignore
+## ignore
 
 - 有些时候，你想添加一个文件到 Git，但发现添加不了，原因是这个文件被.gitignore 忽略了：
 
@@ -244,16 +225,14 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 - 或者你发现，可能是.gitignore 写得有问题，需要找出来到底哪个规则写错了，可以用`$ git check-ignore`命令检查：
 
-```
+```bash
 $ git check-ignore -v App.class
 .gitignore:3:*.class    App.class
 ```
 
-<p id="alias"></p>
+## alias
 
-## # 配置别名
-
-```
+```bash
 $ git config --global alias.st status
 $ git config --global alias.ck checkout
 $ git config --global alias.cm commit
@@ -262,6 +241,6 @@ $ git config --global alias.br branch
 
 - 配置一个`$ git last`，让其显示最后一次提交信息：
 
-```
+```bash
 $ git config --global alias.last 'log -1'
 ```
