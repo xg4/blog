@@ -8,7 +8,7 @@
 
 - [commit message](./msg.md)
 
-## context
+## table of contents
 
 - [local config](#local-config)
 

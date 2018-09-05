@@ -1,6 +1,8 @@
 # Books
 
-## :books: hard
+> :books: hard
+
+## table of contents
 
 - [vue](./vue.md)
 
@@ -25,3 +27,7 @@
 - [ES6](http://es6.ruanyifeng.com/)
 
 - [RESTful API](http://www.ruanyifeng.com/blog/2014/05/restful_api)
+
+- [GraphQL](http://graphql.cn/)
+
+- [React](https://reactjs.org/)

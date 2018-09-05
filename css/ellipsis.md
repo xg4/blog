@@ -1,6 +1,6 @@
 # ellipsis
 
-## context
+## table of contents
 
 - [Single](#Single)
 

@@ -1,6 +1,6 @@
 # flex
 
-## context
+## table of contents
 
 - [Introduction](#Introduction)
 
