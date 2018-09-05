@@ -10,7 +10,13 @@
 
   - [github emojis](./git/emoji.md)
 
-- [css](./css.md)
+- [css](./css/README.md)
+
+  - [ellipsis](./css/ellipsis.md)
+
+  - [flex](./css/flex.md)
+
+  - [wrap](./css/wrap.md)
 
 - [Heroku](./heroku.md)
 

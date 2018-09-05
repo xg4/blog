@@ -43,19 +43,19 @@
 
 - 任何一个容器都可以指定为 Flex 布局。
 
-```css
-.box {
-  display: flex;
-}
-```
+  ```css
+  .box {
+    display: flex;
+  }
+  ```
 
 - 行内元素也可以使用 Flex 布局。
 
-```css
-.box {
-  display: inline-flex;
-}
-```
+  ```css
+  .box {
+    display: inline-flex;
+  }
+  ```
 
 - Webkit 内核的浏览器，必须加上`-webkit`前缀。
 
@@ -99,7 +99,7 @@
     }
     ```
 
-    ![](./css/flex/flex-direction.png)
+    ![](./images/css/flex/flex-direction.png)
 
     - 它可能有4个值。
 
@@ -117,7 +117,7 @@
 
   - 默认情况下，项目都排在一条线（又称"轴线"）上。`flex-wrap`属性定义，如果一条轴线排不下，如何换行。
 
-  ![](./css/flex/flex-wrap.png)
+  ![](./images/css/flex/flex-wrap.png)
 
   ```css
   .box {
@@ -129,15 +129,15 @@
 
     1. `nowrap`（默认）：不换行。
 
-    ![](./css/flex/flex-wrap-nowrap.png)
+    ![](./images/css/flex/flex-wrap-nowrap.png)
 
     2. `wrap`：换行，第一行在上方。
 
-    ![](./css/flex/flex-wrap-wrap.jpg)
+    ![](./images/css/flex/flex-wrap-wrap.jpg)
 
     3. `wrap-reverse`：换行，第一行在下方。
 
-    ![](./css/flex/flex-wrap-wrap-reverse.jpg)
+    ![](./images/css/flex/flex-wrap-wrap-reverse.jpg)
 
 <p id="flex-flow"></p>
 
@@ -164,7 +164,7 @@
   }
   ```
 
-  ![](./css/flex/justify-content.png)
+  ![](./images/css/flex/justify-content.png)
 
   - 它可能取 5 个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。
 
@@ -190,7 +190,7 @@
   }
   ```
 
-  ![](./css/flex/align-items.png)
+  ![](./images/css/flex/align-items.png)
 
   - 它可能取 5 个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。
 
@@ -217,7 +217,7 @@
   }
   ```
 
-  ![](./css/flex/align-content.png)
+  ![](./images/css/flex/align-content.png)
 
   - 该属性可能取 6 个值。
 
@@ -261,7 +261,7 @@
   }
   ```
 
-  ![](./css/flex/order.png)
+  ![](./images/css/flex/order.png)
 
 <p id="flex-grow"></p>
 
@@ -275,7 +275,7 @@
   }
   ```
 
-  ![](./css/flex/flex-grow.png)
+  ![](./images/css/flex/flex-grow.png)
 
   - 如果所有项目的`flex-grow`属性都为`1`，则它们将等分剩余空间（如果有的话）。如果一个项目的`flex-grow`属性为`2`，其他项目都为`1`，则前者占据的剩余空间将比其他项多一倍。
 
@@ -291,7 +291,7 @@
   }
   ```
 
-  ![](./css/flex/flex-shrink.jpg)
+  ![](./images/css/flex/flex-shrink.jpg)
 
   - 如果所有项目的`flex-shrink`属性都为`1`，当空间不足时，都将等比例缩小。如果一个项目的`flex-shrink`属性为`0`，其他项目都为`1`，则空间不足时，前者不缩小。
 
@@ -339,7 +339,7 @@
   }
   ```
 
-  ![](./css/flex/align-self.png)
+  ![](./images/css/flex/align-self.png)
 
   - 该属性可能取 6 个值，除了 auto，其他都与 align-items 属性完全一致。
 
