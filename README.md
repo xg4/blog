@@ -1,10 +1,12 @@
-# notebook
+# Books
 
-## :notebook: learning
+## :books: hard
 
 - [vue](./vue.md)
 
 - [git](./git.md)
+
+  - [emojis](./git/emoji.md)
 
 - [css](./css.md)
 
