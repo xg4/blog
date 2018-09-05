@@ -4,7 +4,9 @@
 
 ## table of contents
 
-- [vue](./vue.md)
+- [vue](./vue/README.md)
+
+  - [vue-router](./vue/router.md)
 
 - [git](./git/README.md)
 
