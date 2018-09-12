@@ -8,23 +8,25 @@
 
 ## table of contents
 
-- [extend](#extend)
+1. [extend](#extend)
 
-- [slot](#slot)
+2. [slot](#slot)
 
-- [plugins](#plugins)
+3. [watch](#watch)
 
-- [directive](#directive)
+4. [plugins](#plugins)
 
-- [sync modifier](#sync-modifier)
+5. [directive](#directive)
 
-- [keep alive](#keep-alive)
+6. [sync modifier](#sync-modifier)
 
-- [syntax-dynamic-import](#syntax-dynamic-import)
+7. [keep alive](#keep-alive)
 
-- [ref](#ref)
+8. [syntax-dynamic-import](#syntax-dynamic-import)
 
-- [vue-lazyload](#vue-lazyload)
+9. [ref](#ref)
+
+10. [vue-lazyload](#vue-lazyload)
 
 ## extend
 
