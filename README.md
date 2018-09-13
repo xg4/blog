@@ -23,3 +23,7 @@
 - [GraphQL](http://graphql.cn/)
 
 - [React](https://reactjs.org/)
+
+- PostCSS
+
+- [Typescript](https://www.tslang.cn/)
