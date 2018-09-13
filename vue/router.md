@@ -2,7 +2,7 @@
 
 > [官方文档](https://router.vuejs.org/zh-cn/)
 
-## table of contents
+## Table of Contents
 
 - [meta](#meta)
 

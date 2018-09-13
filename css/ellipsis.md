@@ -1,6 +1,6 @@
 # ellipsis
 
-## table of contents
+## Table of Contents
 
 - [Single](#Single)
 

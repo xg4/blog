@@ -1,5 +1,11 @@
 # git emojis
 
+## Table of Contents
+
+- [badge](#badge)
+
+- [emojis](#emojis)
+
 ## badge
 
 ![Bitbucket issues](https://img.shields.io/badge/issues-0-brightgreen.svg?style=popout-square)
