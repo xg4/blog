@@ -11,3 +11,10 @@
 - [ellipsis](./ellipsis.md)
 
 - [BEM](./BEM.md)
+
+## NOTES
+
+```css
+<!-- 平滑滚动 -->
+-webkit-overflow-scrolling: touch;
+```
