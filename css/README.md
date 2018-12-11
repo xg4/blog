@@ -15,6 +15,8 @@
 ## NOTES
 
 ```css
-<!-- 平滑滚动 -->
--webkit-overflow-scrolling: touch;
+<!-- 平滑滚动 -- >
+.scroll {
+  -webkit-overflow-scrolling: touch;
+}
 ```

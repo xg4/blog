@@ -14,6 +14,10 @@
 
 - [x] [Heroku](./heroku.md)
 
+- [x] [js](./js/README.md)
+
+- [x] [html](./html/README.md)
+
 ## TODO
 
 - [ ] [ES6](http://es6.ruanyifeng.com/)
