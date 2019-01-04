@@ -18,16 +18,24 @@
 
 - [x] [html](./html/README.md)
 
+### Need
+
+- [x] [ES6](http://es6.ruanyifeng.com/)
+
+- [x] [RESTful API](http://www.ruanyifeng.com/blog/2014/05/restful_api)
+
+- [x] [React](https://reactjs.org/)
+
+- [x] PostCSS
+
+- [x] [Typescript](https://www.tslang.cn/)
+
 ## TODO
-
-- [ ] [ES6](http://es6.ruanyifeng.com/)
-
-- [ ] [RESTful API](http://www.ruanyifeng.com/blog/2014/05/restful_api)
 
 - [ ] [GraphQL](http://graphql.cn/)
 
-- [ ] [React](https://reactjs.org/)
+- [ ] [RxJS](https://github.com/ReactiveX/rxjs)
 
-- [ ] PostCSS
+- [ ] [jest](https://github.com/facebook/jest)
 
-- [ ] [Typescript](https://www.tslang.cn/)
+- [ ] [travis CI](https://www.travis-ci.org/)
