@@ -32,12 +32,12 @@
 
 - [x] [Typescript](https://www.tslang.cn/)
 
+- [x] [jest](https://github.com/facebook/jest)
+
+- [x] [travis CI](https://www.travis-ci.org/)
+
 ## TODO
 
 - [ ] [GraphQL](http://graphql.cn/)
 
 - [ ] [RxJS](https://github.com/ReactiveX/rxjs)
-
-- [ ] [jest](https://github.com/facebook/jest)
-
-- [ ] [travis CI](https://www.travis-ci.org/)
