@@ -20,6 +20,8 @@
 
 - [x] [docker](./docker/README.md)
 
+- [x] [CORS](./CORS/README.md)
+
 ### Need
 
 - [x] [ES6](http://es6.ruanyifeng.com/)
