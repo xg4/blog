@@ -22,6 +22,8 @@
 
 - [x] [CORS](./CORS/README.md)
 
+- [x] [npm](./npm/README.md)
+
 ### Need
 
 - [x] [ES6](http://es6.ruanyifeng.com/)
