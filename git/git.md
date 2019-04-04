@@ -22,6 +22,8 @@
 
 - [github](#github)
 
+- [push](#push)
+
 - [remote repo](#remote-repo)
 
 - [clone](#clone)
@@ -102,6 +104,8 @@ $ git config --global user.email xingor4@gmail.com
 
 - 创建分支：`$ git branch <name>`
 
+- 创建空分支：`$ git checkout --orphan`
+
 - 切换分支：`$ git checkout <name>`
 
 - 创建+切换分支：`$ git checkout -b <name>`相当于以下两步:
@@ -149,6 +153,26 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 - GitHub “Add SSH Key” 粘贴 id_rsa.pub 文件的内容。
 
 > **检验是否连接上 GitHub `$ ssh git@github.com`**
+
+## push
+
+- 远程已有 remote_branch 分支并且已经关联本地分支 local_branch 且本地已经切换到 local_branch
+
+  ```bash
+  $ git push
+  ```
+
+- 远程已有 remote_branch 分支但未关联本地分支 local_branch 且本地已经切换到 local_branch
+
+  ```bash
+  $ git push -u origin/remote_branch
+  ```
+
+- 远程没有有 remote_branch 分支并，本地已经切换到 local_branch
+
+  ```bash
+  $ git push origin local_branch:remote_branch
+  ```
 
 ## remote repo
 
