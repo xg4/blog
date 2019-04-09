@@ -233,6 +233,12 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 
 - 命令`$ git push origin :refs/tags/<tagname>`可以删除一个远程标签。
 
+- ```bash
+  $ git push && git push --tags
+  # ===
+  $ git push --follow-tags
+  ```
+
 ## ignore
 
 - 有些时候，你想添加一个文件到 Git，但发现添加不了，原因是这个文件被.gitignore 忽略了：
