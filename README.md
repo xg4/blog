@@ -20,9 +20,15 @@
 
 - [x] [docker](./docker/README.md)
 
+  - [docker demo](https://github.com/xg4/docker-demo)
+
 - [x] [CORS](./CORS/README.md)
 
 - [x] [npm](./npm/README.md)
+
+- [x] [travis CI](https://www.travis-ci.org/)
+
+  - [travis demo](https://github.com/xg4/travis-ci-demo)
 
 ### Need
 
@@ -37,8 +43,6 @@
 - [x] [Typescript](https://www.tslang.cn/)
 
 - [x] [jest](https://github.com/facebook/jest)
-
-- [x] [travis CI](https://www.travis-ci.org/)
 
 ## TODO
 
