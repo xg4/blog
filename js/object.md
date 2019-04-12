@@ -4,6 +4,10 @@
 
 ## Table of Contents
 
+- [for...in](#for...in)
+
+- [Object.hasOwnProperty](#Object.hasOwnProperty)
+
 - [Object.defineProperty](#Object.defineProperty)
 
 - [Object.freeze](#Object.freeze)
@@ -17,6 +21,28 @@
 - [Object.preventExtension](#Object.preventExtension)
 
   - [Object.isExtensible](#Object.isExtensible)
+
+## 对象属性枚举
+
+TODO
+
+- question: js 枚举属性
+
+- [MDN hasOwnProperty](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/hasOwnProperty)
+
+### for...in
+
+> for...in 语句以任意顺序遍历一个对象的可枚举属性。对于每个不同的属性，语句都会被执行。
+
+### Object.hasOwnProperty
+
+> 所有继承了 Object 的对象都会继承到 hasOwnProperty 方法。这个方法可以用来检测一个对象是否含有特定的自身属性；和 in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性
+
+```js
+const o = {}
+'toString' in o // true
+o.hasOwnProperty('toString') // false
+```
 
 ### Object.defineProperty
 
