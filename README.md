@@ -30,6 +30,8 @@
 
   - [travis demo](https://github.com/xg4/travis-ci-demo)
 
+- [x] [OS](./OS/README.md)
+
 ### Need
 
 - [x] [ES6](http://es6.ruanyifeng.com/)

@@ -4,6 +4,8 @@
 
 ## Table of Contents
 
+- [git server](#git-server)
+
 - [local config](#local-config)
 
 - [init](#init)
@@ -33,6 +35,57 @@
 - [ignore](#ignore)
 
 - [alias](#alias)
+
+## git server
+
+1.  创建 git 用户，运行 git 服务
+
+    ```bash
+    # 添加git账户
+    $ adduser git
+
+    # 修改git的密码
+    $ passwd git
+    ```
+
+2.  禁止 git 用户的 shell 登录
+
+    > 出于安全考虑，第二步创建的 git 用户不允许登录 shell，这可以通过编辑`/etc/passwd` 文件完成。找到类似下面的一行：
+
+    ```bash
+    $ git:x:1000:1000::/home/git:/bin/bash
+    # 改为
+    $ git:x:1000:1000::/home/git:/usr/bin/git-shell
+    ```
+
+3.  免密登录
+
+    ```bash
+    $ mkdir /home/git/.ssh
+    $ chmod 700 /home/git/.ssh
+    $ touch /home/git/.ssh/authorized_keys
+    $ chmod 600 /home/git/.ssh/authorized_keys
+
+    # 如果使用sudo创建，需要将owner改为git
+    $ chown -R git:git /home/git/.ssh/
+    ```
+
+    编辑`/home/git/.ssh/authorized_keys`将客户端公钥放进去
+
+4.  初始化 git 仓库
+
+    ```bash
+    $ mkdir gitrepo
+    $ chown git:git gitrepo/
+    $ cd gitrepo
+
+    # 创建空的git仓库
+    $ git init --bare web.git
+    Initialized empty Git repository in /path/web.git/
+
+    # 将仓库所属用户改为git
+    $ chown -R git:git web.git
+    ```
 
 ## local config
 
