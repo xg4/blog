@@ -4,6 +4,8 @@
 
 ## Table of Contents
 
+- [git hooks](#git-hooks)
+
 - [git server](#git-server)
 
 - [local config](#local-config)
@@ -36,6 +38,89 @@
 
 - [alias](#alias)
 
+## git hooks
+
+- client hooks: (commit hooks, email hooks, other hooks)
+
+  - commit hooks
+
+    - pre-commit
+
+    - prepare-commit-msg
+
+    - commit-msg
+
+    - post-commit
+
+  - email hooks
+
+    - applypatch-msg
+
+    - pre-applypatch
+
+    - post-applypaych
+
+  - other hooks:
+
+    - pre-rebase
+
+    - post-checkout
+
+    - post-merge
+
+- server hooks:
+
+  - pre-receive
+
+  - post-receive
+
+  - update
+
+1. 创建 git server 仓库
+
+   ```bash
+   $ cd /xg4
+   $ git init --bare test.git
+   ```
+
+2. 创建工作目录 git 仓库
+
+   ```bash
+   $ cd /var/www
+   $ git clone /xg4/test.git
+   # or
+   $ git init
+   $ git remote add origin /xg4/test.git
+   ```
+
+3. 改变所属用户和用户组，获得权限
+
+   ```bash
+   $ chown -R git:git /xg4/test.git
+   $ chown -R git:git /var/www/test
+   ```
+
+4. 设置 git hooks
+
+   ```bash
+   cd /xg4/test.git/hooks/
+   vim post-receive
+   ```
+
+   post-receive 文件内容
+
+   ```bash
+   #!/bin/sh
+   unset GIT_DIR
+   cd /var/www/test
+   git pull origin master
+   ```
+
+   ```bash
+   # 赋予 post-receive 文件可执行权限
+   $ chmod +x .git/hooks/post-receive
+   ```
+
 ## git server
 
 1.  创建 git 用户，运行 git 服务
@@ -67,7 +152,7 @@
     $ chmod 600 /home/git/.ssh/authorized_keys
 
     # 如果使用sudo创建，需要将owner改为git
-    $ chown -R git:git /home/git/.ssh/
+    $ chown -R git:git /home/git/
     ```
 
     编辑`/home/git/.ssh/authorized_keys`将客户端公钥放进去
