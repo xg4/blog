@@ -4,6 +4,8 @@
 
 - [git](./git.md)
 
-- [github emoji](./emoji.md)
+- [github](./github.md)
 
 - [commit message](./msg.md)
+
+- [advanced](./advanced.md)

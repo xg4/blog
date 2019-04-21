@@ -1,14 +1,12 @@
 # git
 
-> [https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+> [Git 教程 - 廖雪峰](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 ## Table of Contents
 
-- [git hooks](#git-hooks)
+- [ssh](#ssh)
 
-- [git server](#git-server)
-
-- [local config](#local-config)
+- [config](#config)
 
 - [init](#init)
 
@@ -24,8 +22,6 @@
 
 - [stash(bug branch)](#stash)
 
-- [github](#github)
-
 - [push](#push)
 
 - [remote repo](#remote-repo)
@@ -38,145 +34,25 @@
 
 - [alias](#alias)
 
-## git hooks
+## ssh
 
-- client hooks: (commit hooks, email hooks, other hooks)
+```bash
+$ ssh-keygen -t rsa -C "xingor4@gmail.com"
+```
 
-  - commit hooks
+- 用户主目录下找到.ssh 目录，id_rsa 和 id_rsa.pub 两个文件。
 
-    - pre-commit
+- id_rsa 是私钥，不能泄露出去，id_rsa.pub 是公钥，可以放心地告诉任何人。
 
-    - prepare-commit-msg
+- GitHub “Add SSH Key” 粘贴 id_rsa.pub 文件的内容。
 
-    - commit-msg
+> **检验是否连接上 GitHub `$ ssh git@github.com`**
 
-    - post-commit
-
-  - email hooks
-
-    - applypatch-msg
-
-    - pre-applypatch
-
-    - post-applypaych
-
-  - other hooks:
-
-    - pre-rebase
-
-    - post-checkout
-
-    - post-merge
-
-- server hooks:
-
-  - pre-receive
-
-  - post-receive
-
-  - update
-
-1. 创建 git server 仓库
-
-   ```bash
-   $ cd /xg4
-   $ git init --bare test.git
-   ```
-
-2. 创建工作目录 git 仓库
-
-   ```bash
-   $ cd /var/www
-   $ git clone /xg4/test.git
-   # or
-   $ git init
-   $ git remote add origin /xg4/test.git
-   ```
-
-3. 改变所属用户和用户组，获得权限
-
-   ```bash
-   $ chown -R git:git /xg4/test.git
-   $ chown -R git:git /var/www/test
-   ```
-
-4. 设置 git hooks
-
-   ```bash
-   cd /xg4/test.git/hooks/
-   vim post-receive
-   ```
-
-   post-receive 文件内容
-
-   ```bash
-   #!/bin/sh
-   unset GIT_DIR
-   cd /var/www/test
-   git pull origin master
-   ```
-
-   ```bash
-   # 赋予 post-receive 文件可执行权限
-   $ chmod +x .git/hooks/post-receive
-   ```
-
-## git server
-
-1.  创建 git 用户，运行 git 服务
-
-    ```bash
-    # 添加git账户
-    $ adduser git
-
-    # 修改git的密码
-    $ passwd git
-    ```
-
-2.  禁止 git 用户的 shell 登录
-
-    > 出于安全考虑，第二步创建的 git 用户不允许登录 shell，这可以通过编辑`/etc/passwd` 文件完成。找到类似下面的一行：
-
-    ```bash
-    $ git:x:1000:1000::/home/git:/bin/bash
-    # 改为
-    $ git:x:1000:1000::/home/git:/usr/bin/git-shell
-    ```
-
-3.  免密登录
-
-    ```bash
-    $ mkdir /home/git/.ssh
-    $ chmod 700 /home/git/.ssh
-    $ touch /home/git/.ssh/authorized_keys
-    $ chmod 600 /home/git/.ssh/authorized_keys
-
-    # 如果使用sudo创建，需要将owner改为git
-    $ chown -R git:git /home/git/
-    ```
-
-    编辑`/home/git/.ssh/authorized_keys`将客户端公钥放进去
-
-4.  初始化 git 仓库
-
-    ```bash
-    $ mkdir gitrepo
-    $ chown git:git gitrepo/
-    $ cd gitrepo
-
-    # 创建空的git仓库
-    $ git init --bare web.git
-    Initialized empty Git repository in /path/web.git/
-
-    # 将仓库所属用户改为git
-    $ chown -R git:git web.git
-    ```
-
-## local config
+## config
 
 ```bash
 $ git config --global user.name "xg4"
-$ git config --global user.email xingor4@gmail.com
+$ git config --global user.email "xingor4@gmail.com"
 ```
 
 ## init
@@ -277,20 +153,6 @@ $ git config --global user.email xingor4@gmail.com
   - 用 `$ git stash pop` ，恢复的同时把 stash 内容也删了。
 
 - 你可以多次 stash，恢复的时候，先用`git stash list`查看，然后恢复指定的 stash，用命令：`$ git stash apply stash@{0}`
-
-## github
-
-```bash
-$ ssh-keygen -t rsa -C "xingor4@gmail.com"
-```
-
-- 用户主目录下找到.ssh 目录，id_rsa 和 id_rsa.pub 两个文件。
-
-- id_rsa 是私钥，不能泄露出去，id_rsa.pub 是公钥，可以放心地告诉任何人。
-
-- GitHub “Add SSH Key” 粘贴 id_rsa.pub 文件的内容。
-
-> **检验是否连接上 GitHub `$ ssh git@github.com`**
 
 ## push
 

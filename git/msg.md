@@ -1,13 +1,5 @@
 # git commit message
 
-## 命令行
-
-`$ cat <name>` : 查看某个文件内容
-
-`$ mkdir <name>` : 创建一个空目录
-
-`$ pwd` : 显示当前目录的路径
-
 ## Commit message
 
 - `feat`：新功能（feature）

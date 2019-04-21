@@ -1,4 +1,4 @@
-# git emojis
+# github
 
 ## Table of Contents
 
