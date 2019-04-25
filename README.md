@@ -26,9 +26,7 @@
 
 - [x] [npm](./npm/README.md)
 
-- [x] [travis CI](https://www.travis-ci.org/)
-
-  - [travis demo](https://github.com/xg4/travis-ci-demo)
+- [x] [travis CI](./travis/README.md)
 
 - [x] [OS](./OS/README.md)
 
