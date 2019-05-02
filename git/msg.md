@@ -2,6 +2,14 @@
 
 ## Commit message
 
+- `build`：build相关，npm scripts
+
+- `ci`：ci 构建相关
+
+- `revert`：版本回退
+
+- `perf`：性能相关
+
 - `feat`：新功能（feature）
 
 - `fix`：修补 bug
