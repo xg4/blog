@@ -1,0 +1,27 @@
+language: node_js
+
+node_js:
+  - stable
+
+script: true
+
+before_deploy:
+  - npm run build
+
+deploy:
+  - provider: pages
+    repo: xg4/xg4.github.io
+    target_branch: master
+    local_dir: public
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    keep_history: true
+    on:
+      branch: master
+
+branches:
+  only:
+    - master
+
+cache:
+  yarn: true
