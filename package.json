@@ -16,8 +16,21 @@
     "build": "hexo generate",
     "clean": "hexo clean",
     "deploy": "npm run clean && npm run build && hexo deploy",
+    "lint": "prettier --write 'source/_posts/**/*.md'",
     "new": "hexo new",
-    "start": "hexo server"
+    "start": "hexo server",
+    "test": "prettier --check 'source/_posts/**/*.md'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "hexo": "^3.8.0",
@@ -30,6 +43,11 @@
     "hexo-renderer-marked": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.3"
+  },
+  "devDependencies": {
+    "husky": "^2.2.0",
+    "lint-staged": "^8.1.6",
+    "prettier": "^1.17.0"
   },
   "hexo": {
     "version": "3.8.0"
