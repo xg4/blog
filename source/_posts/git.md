@@ -9,6 +9,8 @@ tags:
 - [Table of Contents](#table-of-contents)
 - [ssh](#ssh)
 - [config](#config)
+  - [alias](#alias)
+  - [log](#log)
 - [initial](#initial)
 - [branch](#branch)
 - [tag](#tag)
@@ -42,20 +44,24 @@ $ git config --global user.name "xg4"
 $ git config --global user.email "xingor4@gmail.com"
 ```
 
-- alias
+### alias
 
-  ```bash
-  $ git config --global alias.st status
-  $ git config --global alias.ck checkout
-  $ git config --global alias.cm commit
-  $ git config --global alias.br branch
-  ```
+```bash
+$ git config --global alias.st status
+$ git config --global alias.ck checkout
+$ git config --global alias.cm commit
+$ git config --global alias.br branch
+```
 
-- 配置一个`$ git last`，让其显示最后一次提交信息：
+### log
 
-  ```bash
-  $ git config --global alias.last 'log -1'
-  ```
+```bash
+# 显示最后一次提交信息
+$ git config --global alias.last 'log -1'
+
+# format log
+$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+```
 
 ## initial
 
