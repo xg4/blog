@@ -19,6 +19,17 @@ tags: git
 
 ## submodule
 
+**子模块的操作默认都是 master 分支**
+
+- 更换子模块分支
+
+```bash
+$ git config -f .gitmodules submodule.<submodule name>.branch dev
+$ git submodule update --remote
+```
+
+`.gitmodules` 加了 `-f` 参数，修改提交后对所有用户有效
+
 ### 添加子模块
 
 ```bash
@@ -100,6 +111,7 @@ $ git push origin HEAD:master
 
    ```bash
    $ git rm --cached theme/next
+   # 不带 --cached 参数直接删除文件
    $ rm -rf theme/next
    ```
 
