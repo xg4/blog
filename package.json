@@ -13,12 +13,15 @@
   "license": "MIT",
   "author": "xg4 <xingor4@gmail.com>",
   "scripts": {
-    "build": "npm run clean && hexo generate",
+    "prebuild": "npm run clean",
+    "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "npm run build && hexo deploy",
+    "predeploy": "npm run build",
+    "deploy": "hexo deploy",
     "lint": "prettier --write 'source/_posts/**/*.md'",
     "new": "hexo new",
     "start": "hexo server",
+    "pretest": "npm run lint",
     "test": "prettier --check 'source/_posts/**/*.md'"
   },
   "husky": {
