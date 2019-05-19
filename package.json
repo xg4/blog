@@ -13,9 +13,9 @@
   "license": "MIT",
   "author": "xg4 <xingor4@gmail.com>",
   "scripts": {
-    "build": "hexo generate",
+    "build": "npm run clean && hexo generate",
     "clean": "hexo clean",
-    "deploy": "npm run clean && npm run build && hexo deploy",
+    "deploy": "npm run build && hexo deploy",
     "lint": "prettier --write 'source/_posts/**/*.md'",
     "new": "hexo new",
     "start": "hexo server",
