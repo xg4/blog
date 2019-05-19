@@ -1,7 +1,7 @@
 ---
 title: HTML - head
 date: 2018-12-11 18:24:24
-tags: html
+tags: HTML
 ---
 
 ## Meta

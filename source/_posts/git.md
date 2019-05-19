@@ -1,7 +1,7 @@
 ---
 title: Git
 date: 2018-09-13 22:42:20
-tags:
+tags: git
 ---
 
 ## Table of Contents
