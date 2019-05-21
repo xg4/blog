@@ -60,7 +60,7 @@ closes #123, #245, #992
 
 ## Emojis
 
-> [GitHub markdown 查看 emojis](https://github.com/xg4/blog/blob/master/source/_posts/github.md)
+**[GitHub markdown 查看 emojis](https://github.com/xg4/blog/blob/master/source/_posts/github.md#emojis)**
 
 ### People
 
