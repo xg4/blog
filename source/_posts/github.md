@@ -20,8 +20,8 @@ tags:
 
 ## Referencing Issues
 
-> commit message 中包含下面的关键词 + issues id， 自动关闭 issue  
-> 关闭其他仓库 issus 可使用：username/repository#issue_number
+> commit message 中包含下面的关键词 + issues id， 自动关闭 issues  
+> 关闭其他仓库 issues 可使用：username/repository#issue_number
 
 - close
 
@@ -59,6 +59,8 @@ closes #123, #245, #992
 ![NodeVersion](https://img.shields.io/badge/node-%3E%3D%208.0.0-brightgreen.svg?longCache=true&style=popout-square)
 
 ## Emojis
+
+> [GitHub markdown 查看 emojis](https://github.com/xg4/blog/blob/master/source/_posts/github.md)
 
 ### People
 
