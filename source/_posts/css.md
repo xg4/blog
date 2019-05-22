@@ -1,7 +1,7 @@
 ---
 title: CSS
 date: 2018-09-05 23:21:33
-tags: CSS
+tags: css
 ---
 
 ## Table of Contents

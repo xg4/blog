@@ -1,7 +1,7 @@
 ---
 title: Linux
 date: 2019-04-20 22:52:27
-tags: Linux
+tags: linux
 ---
 
 ## Table of Contents

@@ -2,8 +2,9 @@
 title: Travis CI Deploy
 date: 2019-04-25 18:05:42
 tags:
-  - CI
-  - DevOps
+  - ci
+  - devops
+  - travis
 ---
 
 > [travis demo](https://github.com/xg4/DevOps-demos)

@@ -1,7 +1,7 @@
 ---
 title: HTML
 date: 2018-12-11 18:24:24
-tags: HTML
+tags: html
 ---
 
 ## Table of Contents

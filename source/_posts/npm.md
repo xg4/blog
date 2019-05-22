@@ -1,7 +1,7 @@
 ---
 title: NPM
 date: 2019-04-02 20:18:04
-tags: NPM
+tags: npm
 ---
 
 ## Initial

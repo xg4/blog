@@ -1,7 +1,7 @@
 ---
 title: CSS - BEM
 date: 2018-09-13 16:38:12
-tags: CSS
+tags: css
 ---
 
 - [BEM 命名模式](#bem-%E5%91%BD%E5%90%8D%E6%A8%A1%E5%BC%8F)

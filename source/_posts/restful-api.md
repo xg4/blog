@@ -2,8 +2,8 @@
 title: RESTful API
 date: 2018-09-18 14:36:06
 tags:
-  - RESTful API
-  - HTTP
+  - restful api
+  - http
 ---
 
 > [理解 RESTful 架构 - 阮一峰](http://www.ruanyifeng.com/blog/2011/09/restful.html)  

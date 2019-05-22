@@ -1,7 +1,9 @@
 ---
 title: Docker
 date: 2019-03-12 10:55:27
-tags: DevOps
+tags:
+  - docker
+  - devops
 ---
 
 > [Docker 入门教程 - 阮一峰](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
