@@ -8,6 +8,7 @@ tags: CSS
 - [LESS SCSS](#less-scss)
 - [Tips](#tips)
 - [Example](#example)
+- [常用命名](#%E5%B8%B8%E7%94%A8%E5%91%BD%E5%90%8D)
 
 > BEM 是块（block）、元素（element）、修饰符（modifier）的简写，由 Yandex 团队提出的一种前端 CSS 命名方法论
 
@@ -131,3 +132,41 @@ tags: CSS
   <li></li>
 </ul>
 ```
+
+## 常用命名
+
+| 名称                  | 作用                                |
+| --------------------- | ----------------------------------- |
+| .wrap 或 .wrapper     | 外侧包裹                            |
+| .container            | 包裹容器                            |
+| .header               | 用于头部                            |
+| .body                 | 页面 body                           |
+| .footer               | 页面尾部                            |
+| .aside 或 .sidebar    | 用于侧边栏                          |
+| .content              | 和 header footer 对应，用于主要内容 |
+| .navigation           | 导航元素                            |
+| .pagination           | 分页                                |
+| .tabs > .tab          | tab 切换                            |
+| .breadcrumbs          | 导航列表、面包屑                    |
+| .dropdown             | 下拉菜单                            |
+| .article              | 文章                                |
+| .main                 | 用于主体                            |
+| .media                | 媒体资源                            |
+| .thumbnail 或 .avatar | 头像，小图像                        |
+| .panel                | 面板                                |
+| .tooltip              | 鼠标放置上去的提示                  |
+| .popup                | 鼠标点击弹出的提示                  |
+| .button 或 .btn       | 按钮                                |
+| .ad                   | 广告                                |
+| .subnav               | 二级导航                            |
+| .menu                 | 菜单                                |
+| .tag                  | 标签                                |
+| .message 或 .notice   | 提示消息                            |
+| .summary              | 摘要                                |
+| .logo                 | logo                                |
+| .search               | 搜索框                              |
+| .login                | 登录                                |
+| .register             | 注册                                |
+| .banner               | 广告条                              |
+| .copyright            | 版权                                |
+| .modal 或 .dialog     | 弹窗                                |
