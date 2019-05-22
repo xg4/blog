@@ -1,8 +1,28 @@
 ---
-title: HTML - head
+title: HTML
 date: 2018-12-11 18:24:24
 tags: HTML
 ---
+
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [HTML5 结构化元素](#html5-%E7%BB%93%E6%9E%84%E5%8C%96%E5%85%83%E7%B4%A0)
+- [Meta](#meta)
+- [Link](#link)
+
+## HTML5 结构化元素
+
+| 标签    | 作用                                                                                                                                                    |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| header  | body、main 标签的直接子标签，位置在页面头部，内容可能为 logo、标语、搜索提示、导航栏                                                                    |
+| nav     | 导航栏包在 nav 标签内，可能出现在头部、侧边栏、底部等等，神奇的地方在于设置 nav 标签的 display:inline-block，是作用在 li 标签上的                       |
+| main    | body 标签的直接子标签，主内容区域                                                                                                                       |
+| aside   | 侧边栏                                                                                                                                                  |
+| article | 一般出现在 main 标签内，article 标签内可以有 section、footer 等标签，是比较独立的内容，比如像博客网站主页的一个文章简介                                 |
+| section | section 和 div 很类似，如果使用 div 标签是为了对内容做样式控制，或者为了便于 javascript 获取做其他操作，那么使用 div 就是你的答案，其他情况就用 section |
+| address | 提供联系信息，放在 article 标签内提供文章作者信息，放在 main、body、footer 内提供网站信息                                                               |
+| footer  | 一般在 HTML 结构底部，补充网站信息，如果放在 article 内补充文章信息                                                                                     |
 
 ## Meta
 
