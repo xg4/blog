@@ -7,9 +7,65 @@ tags: html
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [figure](#figure)
 - [HTML5 结构化元素](#html5-%E7%BB%93%E6%9E%84%E5%8C%96%E5%85%83%E7%B4%A0)
 - [Meta](#meta)
 - [Link](#link)
+
+## figure
+
+> [MDN figure](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)  
+> 代表一段独立的内容，在主文中引用的图片，插图，表格，代码段， 和 figcaption 一起使用，figcaption 表示说明文字或者标题，当这部分转移到附录中或者其他页面时不会影响到主体
+
+```html
+<!-- only figure -->
+<figure>
+  <img src="source" alt="img" />
+</figure>
+
+<!-- image -->
+<figure>
+  <img src="source" alt="img" />
+  <figcaption>An image</figcaption>
+</figure>
+
+<!-- code -->
+<figure>
+  <figcaption>Get browser details using <code>navigator</code>.</figcaption>
+  <pre>
+function NavigatorExample() {
+  var txt;
+  txt = "Browser CodeName: " + navigator.appCodeName + "; ";
+  txt+= "Browser Name: " + navigator.appName + "; ";
+  txt+= "Browser Version: " + navigator.appVersion  + "; ";
+  txt+= "Cookies Enabled: " + navigator.cookieEnabled  + "; ";
+  txt+= "Platform: " + navigator.platform  + "; ";
+  txt+= "User-agent header: " + navigator.userAgent  + "; ";
+  console.log("NavigatorExample", txt);
+}
+  </pre>
+</figure>
+
+<!-- reference -->
+<figure>
+  <figcaption><cite>Edsger Dijkstra:</cite></figcaption>
+  <blockquote>
+    If debugging is the process of removing software bugs, then programming must
+    be the process of putting them in.
+  </blockquote>
+</figure>
+
+<!-- text -->
+<figure>
+  <p style="white-space:pre">
+    Bid me discourse, I will enchant thine ear, Or like a fairy trip upon the
+    green, Or, like a nymph, with long dishevell'd hair, Dance on the sands, and
+    yet no footing seen: Love is a spirit all compact of fire, Not gross to
+    sink, but light, and will aspire.
+  </p>
+  <figcaption><cite>Venus and Adonis</cite>, by William Shakespeare</figcaption>
+</figure>
+```
 
 ## HTML5 结构化元素
 
