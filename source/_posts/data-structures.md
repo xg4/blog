@@ -11,6 +11,7 @@ tags:
 - [Table of Contents](#table-of-contents)
 - [Stack](#stack)
 - [Queue](#queue)
+  - [Priority Queue](#priority-queue)
 
 ## Stack
 
@@ -66,11 +67,11 @@ class Queue {
 
   private queue: any[] = []
 
-  public out() {
+  public dequeue() {
     return this.queue.shift()
   }
 
-  public in(data: any) {
+  public enqueue(data: any) {
     return this.queue.push(data)
   }
 
@@ -88,6 +89,57 @@ class Queue {
 
   public toString() {
     return this.queue.map(item => item.toString()).join(',')
+  }
+}
+```
+
+### Priority Queue
+
+```ts
+class Item {
+  public data: any
+  public level: number
+  public constructor(data: any, level: number) {
+    this.data = data
+    this.level = level
+  }
+}
+
+class Queue {
+  public get length() {
+    return this.queue.length
+  }
+
+  private queue: Item[] = []
+
+  public dequeue() {
+    return this.queue.shift()
+  }
+
+  public enqueue(data: any, level: number) {
+    const item = new Item(data, level)
+    const index = this.queue.findIndex(it => item.level > it.level)
+    if (index !== -1) {
+      this.queue.splice(index, 0, item)
+    } else {
+      this.queue.push(item)
+    }
+  }
+
+  public front() {
+    return this.queue[0].data
+  }
+
+  public isEmpty() {
+    return !!this.length
+  }
+
+  public size() {
+    return this.length
+  }
+
+  public toString() {
+    return this.queue.map(item => item.data.toString()).join(',')
   }
 }
 ```
