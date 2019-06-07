@@ -151,25 +151,24 @@ class Queue {
 
 ### 单向链表
 
-```ts
+```js
 class Node {
-  public data: any
-  public next: Node | null
-  public constructor(data: any) {
+  constructor(data) {
     this.data = data
     this.next = null
   }
+
+  toString() {
+    return this.data.toString()
+  }
 }
 class LinkedList {
-  public static Node = Node
-  private head: Node | null
-  private length: number
-  public constructor() {
+  constructor() {
     this.head = null
     this.length = 0
   }
 
-  public append(data: any) {
+  append(data) {
     const node = new Node(data)
 
     if (!this.head) {
@@ -185,7 +184,7 @@ class LinkedList {
     this.length += 1
   }
 
-  public insert(data: any, position: number) {
+  insert(position, data) {
     if (position < 0 || position > this.length) {
       return false
     }
@@ -195,14 +194,13 @@ class LinkedList {
       node.next = this.head
       this.head = node
     } else {
-      let current = this.head as Node
+      let current = this.head
       let prev = null
       let index = 0
-      do {
+      while (index++ < position) {
         prev = current
-        // current.next 可能为 null 或 Node
-        current = current.next as Node
-      } while (++index < position)
+        current = current.next
+      }
       node.next = current
       prev.next = node
     }
@@ -210,17 +208,17 @@ class LinkedList {
     return true
   }
 
-  public get(position: number) {
+  get(position) {
     if (position < 0 || position >= this.length) return null
     let index = 0
-    let current = this.head as Node
+    let current = this.head
     while (index++ < position) {
-      current = current.next as Node
+      current = current.next
     }
     return current.data
   }
 
-  public indexOf(data: any) {
+  indexOf(data) {
     let current = this.head
     let index = 0
 
@@ -235,32 +233,32 @@ class LinkedList {
     return -1
   }
 
-  public update(data: any, position: number) {
+  update(position, data) {
     if (position < 0 || position >= this.length) return false
     let index = 0
-    let current = this.head as Node
+    let current = this.head
     while (index++ < position) {
-      current = current.next as Node
+      current = current.next
     }
     current.data = data
     return true
   }
 
-  public removeAt(position: number) {
+  removeAt(position) {
     if (position < 0 || position >= this.length) {
       return false
     }
 
     if (position === 0) {
-      this.head = (this.head as Node).next
+      this.head = this.head.next
     } else {
       let index = 0
-      let current = this.head as Node
+      let current = this.head
       let prev = null
-      do {
+      while (index++ < position) {
         prev = current
-        current = current.next as Node
-      } while (++index < position)
+        current = current.next
+      }
 
       prev.next = current.next
     }
@@ -269,24 +267,24 @@ class LinkedList {
     return true
   }
 
-  public remove(data: any) {
+  remove(data) {
     const position = this.indexOf(data)
     return this.removeAt(position)
   }
 
-  public size() {
+  size() {
     return this.length
   }
 
-  public isEmpty() {
+  isEmpty() {
     return !this.length
   }
 
-  public toString() {
+  toString() {
     let current = this.head
     let str = ''
     while (current) {
-      str += current.data.toString() + ' '
+      str += current.toString() + ','
       current = current.next
     }
     return str
@@ -303,6 +301,10 @@ class Node {
     this.data = data
     this.next = null
   }
+
+  toString() {
+    return this.data.toString()
+  }
 }
 
 class LinkedList {
@@ -315,19 +317,19 @@ class LinkedList {
   append(data) {
     const node = new Node(data)
 
-    if (!this.head || !this.tail) {
+    if (!this.length) {
       this.head = node
       this.tail = node
     } else {
-      this.head.next = node
-      node.prev = this.head
+      this.tail.next = node
+      node.prev = this.tail
       this.tail = node
     }
 
     this.length += 1
   }
 
-  insert(data, position) {
+  insert(position, data) {
     if (position < 0 || position > this.length) {
       return false
     }
@@ -357,9 +359,9 @@ class LinkedList {
 
     let current = this.head
     let index = 0
-    do {
+    while (index++ < position) {
       current = current.next
-    } while (++index < position)
+    }
     node.next = current
     node.prev = current.prev
     current.prev.next = node
@@ -409,7 +411,7 @@ class LinkedList {
     return -1
   }
 
-  update(data, position) {
+  update(position, data) {
     const node = this.getNode(position)
     if (!node) {
       return false
@@ -476,7 +478,7 @@ class LinkedList {
     let current = this.head
     let str = ''
     while (current) {
-      str += current.data.toString() + ' '
+      str += current.toString() + ','
       current = current.next
     }
     return str
