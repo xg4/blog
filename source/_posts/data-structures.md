@@ -20,38 +20,40 @@ tags:
 
 > 受限的线性结构，栈顶操作，LIFO (last in first out) 后进先出
 
-可以基于 Array 和 List 实现
+可以基于 `Array` 和 `List` 实现
 
-```ts
+```js
 // 基于 Array 的 Stack
 class Stack {
-  public get length() {
+  get length() {
     return this.stack.length
   }
 
-  private stack: any[] = []
+  constructor() {
+    this.stack = []
+  }
 
-  public pop() {
+  pop() {
     return this.stack.pop()
   }
 
-  public push(data: any) {
+  push(data) {
     return this.stack.push(data)
   }
 
-  public peek() {
+  peek() {
     return this.stack[this.length - 1]
   }
 
-  public isEmpty() {
+  isEmpty() {
     return !!this.length
   }
 
-  public size() {
+  size() {
     return this.length
   }
 
-  public toString() {
+  toString() {
     return this.stack.map(item => item.toString()).join(',')
   }
 }
@@ -61,36 +63,40 @@ class Stack {
 
 > 受限的线性结构，FIFO (first in first out) 先入先出
 
-```ts
+队列可以基于 `Array` 或 `List` 实现
+
+```js
 // 基于 Array 的 Queue
 class Queue {
-  public get length() {
+  get length() {
     return this.queue.length
   }
 
-  private queue: any[] = []
+  constructor() {
+    this.queue = []
+  }
 
-  public dequeue() {
+  dequeue() {
     return this.queue.shift()
   }
 
-  public enqueue(data: any) {
+  enqueue(data) {
     return this.queue.push(data)
   }
 
-  public front() {
+  front() {
     return this.queue[0]
   }
 
-  public isEmpty() {
+  isEmpty() {
     return !!this.length
   }
 
-  public size() {
+  size() {
     return this.length
   }
 
-  public toString() {
+  toString() {
     return this.queue.map(item => item.toString()).join(',')
   }
 }
@@ -98,28 +104,32 @@ class Queue {
 
 ### Priority Queue
 
-```ts
+```js
 class Item {
-  public data: any
-  public level: number
-  public constructor(data: any, level: number) {
+  constructor(data, level = 0) {
     this.data = data
     this.level = level
+  }
+
+  toString() {
+    return this.data.toString()
   }
 }
 
 class Queue {
-  public get length() {
+  constructor() {
+    this.queue = []
+  }
+
+  get length() {
     return this.queue.length
   }
 
-  private queue: Item[] = []
-
-  public dequeue() {
+  dequeue() {
     return this.queue.shift()
   }
 
-  public enqueue(data: any, level: number) {
+  enqueue(data, level) {
     const item = new Item(data, level)
     const index = this.queue.findIndex(it => item.level > it.level)
     if (index !== -1) {
@@ -129,20 +139,20 @@ class Queue {
     }
   }
 
-  public front() {
+  front() {
     return this.queue[0].data
   }
 
-  public isEmpty() {
+  isEmpty() {
     return !!this.length
   }
 
-  public size() {
+  size() {
     return this.length
   }
 
-  public toString() {
-    return this.queue.map(item => item.data.toString()).join(',')
+  toString() {
+    return this.queue.map(item => item.toString()).join(',')
   }
 }
 ```
