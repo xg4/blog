@@ -11,9 +11,50 @@ tags:
 > [官方文档](https://router.vuejs.org/zh-cn/)
 
 - [Table of Contents](#table-of-contents)
+- [路由懒加载](#%E8%B7%AF%E7%94%B1%E6%87%92%E5%8A%A0%E8%BD%BD)
 - [meta](#meta)
 - [navigation guards](#navigation-guards)
 - [navigation](#navigation)
+
+## 路由懒加载
+
+> [组件懒加载](https://router.vuejs.org/zh/guide/advanced/lazy-loading.html)
+
+- 使用 Babel，添加 [syntax-dynamic-import](https://babeljs.io/docs/plugins/syntax-dynamic-import/) 插件
+
+  ```bash
+  $ yarn add @babel/plugin-syntax-dynamic-import --dev
+  ```
+
+  `.babelrc`
+
+  ```json
+  {
+    "plugins": ["@babel/plugin-syntax-dynamic-import"]
+  }
+  ```
+
+- 定义一个被 Webpack 自动代码分割的异步组件。
+
+  ```js
+  const Foo = () => import('./Foo.vue')
+
+  const router = new VueRouter({
+    routes: [{ path: '/foo', component: Foo }]
+  })
+  ```
+
+- 把组件按组分块
+
+  有时候我们想把某个路由下的所有组件都打包在同个异步块 (chunk) 中，只需要使用命名 chunk，一个特殊的注释语法来提供 chunk name (需要 webpack > 2.4)
+
+  ```js
+  const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue')
+  const Bar = () => import(/* webpackChunkName: "group-foo" */ './Bar.vue')
+  const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue')
+  ```
+
+  **webpack 会将任何一个异步模块与相同的块名称组合到相同的异步块中**
 
 ## meta
 
