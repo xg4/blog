@@ -4,6 +4,13 @@ date: 2019-04-02 20:18:04
 tags: npm
 ---
 
+## Table of Contents
+
+- [Table of Contents](#Table-of-Contents)
+- [Initial](#Initial)
+- [Publish](#Publish)
+- [Release](#Release)
+
 ## Initial
 
 ```bash
@@ -11,6 +18,42 @@ $ npm config set init.author.name xg4
 $ npm config set init.author.email xingor4@gmail.com
 $ npm config set init.license MIT
 ```
+
+## Publish
+
+- 登录 npm 账号
+
+  ```bash
+  $ npm login
+  # or
+  $ npm adduser
+  ```
+
+- 配置淘宝镜像之后，无法进行 publish
+
+  ```bash
+  $ npm config set registry https://registry.npmjs.org
+  ```
+
+- private package 需要进行 scope 的设置
+
+  ```bash
+  $ npm config set scope <your_scope>
+  ```
+
+  scope 的包就成了@scope/xxx
+
+- 发布公有的 scope 包
+
+  ```bash
+  $ npm publish --access=public
+  ```
+
+- 撤销发布
+
+  ```bash
+  $ npm unpublish --force
+  ```
 
 ## Release
 
@@ -34,6 +77,8 @@ minor：次版本号
 patch：补丁号
 
 premajor：预备主版本
+
+preminor
 
 prepatch：预备次版本
 
