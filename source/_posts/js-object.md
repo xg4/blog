@@ -8,18 +8,18 @@ tags: js
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [isSealed](#issealed)
+- [Table of Contents](#Table-of-Contents)
+- [isSealed](#isSealed)
 - [seal](#seal)
-- [isFrozen](#isfrozen)
+- [isFrozen](#isFrozen)
 - [freeze](#freeze)
-- [isExtensible](#isextensible)
-- [preventExtension](#preventextension)
-- [defineProperty](#defineproperty)
+- [isExtensible](#isExtensible)
+- [preventExtension](#preventExtension)
+- [defineProperty](#defineProperty)
   - [descriptor](#descriptor)
   - [keys](#keys)
 - [for...in](#forin)
-- [hasOwnProperty](#hasownproperty)
+- [hasOwnProperty](#hasOwnProperty)
 
 ## isSealed
 
