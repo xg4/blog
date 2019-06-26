@@ -6,15 +6,32 @@ tags: html
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
+- [Table of Contents](#Table-of-Contents)
+- [ruby](#ruby)
+  - [example](#example)
 - [figure](#figure)
-- [HTML5 结构化元素](#html5-%E7%BB%93%E6%9E%84%E5%8C%96%E5%85%83%E7%B4%A0)
-- [Meta](#meta)
-- [Link](#link)
+- [HTML5 结构化元素](#HTML5-%E7%BB%93%E6%9E%84%E5%8C%96%E5%85%83%E7%B4%A0)
+- [Meta](#Meta)
+- [Link](#Link)
+
+## ruby
+
+> [MDN - ruby](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ruby)  
+> 被用来展示东亚文字注音或字符注释
+
+### example
+
+```html
+<ruby>
+  汉 <rp>(</rp><rt>han</rt><rp>)</rp> 字 <rp>(</rp><rt>zi</rt><rp>)</rp>
+</ruby>
+
+<ruby> 明 日 <rp>(</rp><rt>ming ri</rt><rp>)</rp> </ruby>
+```
 
 ## figure
 
-> [MDN figure](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)  
+> [MDN - figure](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure)  
 > 代表一段独立的内容，在主文中引用的图片，插图，表格，代码段， 和 figcaption 一起使用，figcaption 表示说明文字或者标题，当这部分转移到附录中或者其他页面时不会影响到主体
 
 ```html
