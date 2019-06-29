@@ -22,3 +22,5 @@ tags: js
 ## URLSearchParams
 
 > [MDN - URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)
+
+[GitHub polyfill](https://github.com/jerrybendy/url-search-params-polyfill)
