@@ -6,11 +6,31 @@ tags: css
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
+- [Table of Contents](#Table-of-Contents)
+- [extend-click](#extend-click)
 - [wrap](#wrap)
 - [ellipsis](#ellipsis)
 - [clearfix](#clearfix)
 - [hairline](#hairline)
+
+## extend-click
+
+> 扩展小图标的触区（点击区域）
+
+```less
+.extend-click {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+```
 
 ## wrap
 
