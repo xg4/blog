@@ -15,6 +15,10 @@ tags:
 - [loader](#loader)
   - [enforce](#enforce)
   - [awesome](#awesome)
+- [server](#server)
+  - [proxy](#proxy)
+  - [hook](#hook)
+  - [webpack-dev-middleware](#webpack-dev-middleware)
 
 ## main
 
@@ -54,3 +58,67 @@ tags:
 | url-loader   | `/\.(png|jpe?g|gif)$/` | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/url-loader)  |
 | file-loader  | `/\.(png|jpe?g|gif)$/` | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/file-loader) |
 | babel-loader | `/\.(ts|js)x?$/`       | es+ 转 es5                    | [GitHub](https://github.com/babel/babel-loader)          |
+
+## server
+
+### proxy
+
+简单的代理请求到目标域
+
+```js
+module.exports = {
+  devServer: {
+    proxy: {
+      '/api': {
+        target: 'https://localhost',
+        pathRewrite: { '/api': '' }
+      }
+    }
+  }
+}
+```
+
+### hook
+
+webpack 中使用 express server
+
+webpack dev server 是基于 express 构建的，它提供一个钩子函数 `before` 在参数中将 express app 暴露出来，用户可以自定义添加路由，模拟数据等
+
+```js
+module.exports = {
+  devServer: {
+    before(app) {
+      app.get('/user', (req, res) => {
+        res.json({ name: 'hello' })
+      })
+    }
+  }
+}
+```
+
+### webpack-dev-middleware
+
+> [webpack/webpack-dev-middleware](https://github.com/webpack/webpack-dev-middleware)
+
+用户自定义的 server 中使用 webpack
+
+```js
+const webpack = require('webpack')
+const middleware = require('webpack-dev-middleware')
+
+const config = require('./webpack.config.js')
+const compiler = webpack({
+  // webpack options
+  ...config
+})
+const express = require('express')
+const app = express()
+
+app.use(
+  middleware(compiler, {
+    // webpack-dev-middleware options
+  })
+)
+
+app.listen(3000, () => console.log('Example app listening on port 3000!'))
+```
