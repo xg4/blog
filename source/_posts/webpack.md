@@ -49,7 +49,7 @@ tags:
 
 ## loader
 
-> loader 因具有单一性，只处理一件事情
+> loader 应具有单一性，只处理一件事情一个模块
 
 ### enforce
 
@@ -65,12 +65,12 @@ tags:
 
 ### awesome
 
-| name         | test                   | description                   | link                                                     |
-| ------------ | ---------------------- | ----------------------------- | -------------------------------------------------------- |
-| html-loader  | `/\.html\$/`           | 处理 html 中的资源引用        | [GitHub](https://github.com/webpack-contrib/html-loader) |
-| url-loader   | `/\.(png|jpe?g|gif)$/` | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/url-loader)  |
-| file-loader  | `/\.(png|jpe?g|gif)$/` | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/file-loader) |
-| babel-loader | `/\.(ts|js)x?$/`       | es+ 转 es5                    | [GitHub](https://github.com/babel/babel-loader)          |
+| name         | description                   | link                                                     |
+| ------------ | ----------------------------- | -------------------------------------------------------- |
+| html-loader  | 处理 html 中的资源引用        | [GitHub](https://github.com/webpack-contrib/html-loader) |
+| url-loader   | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/url-loader)  |
+| file-loader  | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/file-loader) |
+| babel-loader | es+ 转 es5                    | [GitHub](https://github.com/babel/babel-loader)          |
 
 ## server
 
