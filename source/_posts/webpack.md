@@ -13,7 +13,11 @@ tags:
 - [Table of Contents](#Table-of-Contents)
 - [main](#main)
 - [loader](#loader)
-  - [enforce](#enforce)
+  - [路径](#%E8%B7%AF%E5%BE%84)
+  - [顺序](#%E9%A1%BA%E5%BA%8F)
+  - [Pitch loader](#Pitch-loader)
+  - [raw loader](#raw-loader)
+  - [loader context](#loader-context)
   - [awesome](#awesome)
 - [server](#server)
   - [proxy](#proxy)
@@ -49,19 +53,180 @@ tags:
 
 ## loader
 
-> loader 应具有单一性，只处理一件事情一个模块
+> [Webpack loaders API](https://webpack.js.org/api/loaders/)
 
-### enforce
+- 从右到左，链式执行
 
-执行顺序默认为从后向前，从右向左执行
+- 上一个 Loader 的处理结果给下一个接着处理
 
-- 前置(pre)
+- node module 写法
 
-- 普通(normal)
+- module 依赖
 
-- 行内(inline)
+- return && this.callback()
 
-- 后置(post)
+### 路径
+
+webpack 中查找 loader 的路径
+
+- loader 的绝对路径
+
+- 设置 loader 的别名
+
+- 设置 loader 的查找模块
+
+```js
+const path = require('path')
+
+const resolve = (...dir) => path.resolve(__dirname, ...dir)
+
+module.exports = {
+  mode: 'development',
+  entry: resolve('src/index.js'),
+  output: {
+    filename: 'build.js',
+    path: resolve('dist')
+  },
+  resolveLoader: {
+    // loader 查找模块
+    modules: ['node_modules', resolve('loaders')],
+    // loader 别名
+    alias: {
+      'x-loader': resolve('loaders/x-loader.js')
+    }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        // loader 绝对路径
+        use: resolve('loaders/x-loader.js')
+      },
+      {
+        test: /\.js$/,
+        use: ['1-loader', '2-loader', '3-loader']
+      }
+    ]
+  }
+}
+```
+
+### 顺序
+
+> webpack 中 loader 的默认执行顺序是从下到上，从右向左执行  
+> `enforce` 调用的优先级（权重），调整调用顺序
+
+顺序：前置(pre) > 普通(normal) > 行内(inline) > 后置(post)
+
+```js
+// -! 不会执行之前的 pre 和 normal loader 的处理
+// ! 不会执行之前的 normal loader 的处理
+// !! 什么都不执行，只执行自己
+// import '-!inline-loader!./a.js'
+// import '!inline-loader!./a.js'
+import '!!inline-loader!./a.js'
+```
+
+```js
+module.exports = {
+  // ...
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        // loader 绝对路径
+        use: resolve('loaders/x-loader.js')
+      },
+      {
+        test: /\.js$/,
+        use: ['1-loader'],
+        enforce: 'pre'
+      },
+      {
+        test: /\.js$/,
+        use: ['2-loader']
+      },
+      {
+        test: /\.js$/,
+        use: ['3-loader'],
+        enforce: 'post'
+      }
+    ]
+  }
+}
+```
+
+### Pitch loader
+
+> pitch 方法在 Loader 中便是从左到右执行的，并且可以通过 data 这个变量来进行 pitch 和 normal 之间传递。熔断功能
+
+正常顺序：
+
+```
+|- a-loader `pitch`
+  |- b-loader `pitch`
+    |- c-loader `pitch`
+      |- requested module is picked up as a dependency
+    |- c-loader normal execution
+  |- b-loader normal execution
+|- a-loader normal execution
+```
+
+设置 `b-loader` 的 pitch 函数
+
+```js
+// b-loader.js
+module.exports = function(source) {
+  return source
+}
+
+module.exports.pitch = function(remainingRequest, precedingRequest, data) {
+  if (someCondition()) {
+    return (
+      'module.exports = require(' +
+      JSON.stringify('-!' + remainingRequest) +
+      ');'
+    )
+  }
+}
+```
+
+设置之后的顺序：
+
+```
+|- a-loader `pitch`
+  |- b-loader `pitch` returns a module
+|- a-loader normal execution
+```
+
+### raw loader
+
+默认的情况，原文件是以 UTF-8 String 的形式传入给 Loader，而在上面有提到的，module 可使用 buffer 的形式进行处理，针对这种情况，只需要设置 module.exports.raw = true; 这样内容将会以 raw Buffer 的形式传入到 loader 中了
+
+```js
+module.exports = function(source) {
+  return source
+}
+
+module.exports.raw = true
+```
+
+### loader context
+
+loader 中的上下文 `this`
+
+- data: pitch loader 中可以通过 data 让 pitch 和 normal module 进行数据共享。
+
+- query: 则能获取到 Loader 上附有的参数。 如 require("./somg-loader?ls"); 通过 query 就可以得到 "ls" 了。
+
+- emitFile: emitFile 能够让开发者更方便的输出一个 file 文件，这是 webpack 特有的方法，使用的方法也很直接
+
+```js
+module.exports = function(source) {
+  console.log(this)
+  return source
+}
+```
 
 ### awesome
 
