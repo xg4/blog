@@ -8,6 +8,8 @@ tags:
   - api
 ---
 
+> node global, browser window 上共同的 API
+
 ## Table of Contents
 
 - [Table of Contents](#Table-of-Contents)
