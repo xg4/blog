@@ -11,7 +11,6 @@ tags:
 ## Table of Contents
 
 - [Table of Contents](#Table-of-Contents)
-- [main](#main)
 - [loader](#loader)
   - [路径](#%E8%B7%AF%E5%BE%84)
   - [顺序](#%E9%A1%BA%E5%BA%8F)
@@ -19,6 +18,7 @@ tags:
   - [raw loader](#raw-loader)
   - [loader context](#loader-context)
   - [awesome](#awesome)
+- [plugin](#plugin)
 - [server](#server)
   - [proxy](#proxy)
   - [hook](#hook)
@@ -36,8 +36,6 @@ tags:
   - [SplitChunksPlugin](#SplitChunksPlugin)
   - [dynamic imports](#dynamic-imports)
   - [HMR - Hot Module Replacement](#HMR---Hot-Module-Replacement)
-
-## main
 
 核心概念
 
@@ -236,6 +234,17 @@ module.exports = function(source) {
 | url-loader   | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/url-loader)  |
 | file-loader  | 处理资源文件，image、video 等 | [GitHub](https://github.com/webpack-contrib/file-loader) |
 | babel-loader | es+ 转 es5                    | [GitHub](https://github.com/babel/babel-loader)          |
+
+## plugin
+
+> [plugin API](https://webpack.js.org/concepts/plugins/)  
+> [webpack plugins](https://webpack.js.org/plugins/)
+
+- webpack 中的 plugin 必须是一个 `class`，且拥有 `apply` 方法
+
+- webpack 打包时会自动调用 `plugin` 实例的 `apply` 方法，并传递 `compiler` 参数
+
+- `compiler` 上有个 `hooks` 属性（钩子函数），plugin 就是基于钩子函数来做处理
 
 ## server
 
