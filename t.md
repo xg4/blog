@@ -1,43 +1,3 @@
----
-title: Javascript Utils
-date: 2019-07-07 19:35:38
-tags:
-  - js
-  - util
----
-
-## Table of Contents
-
-- [Table of Contents](#Table-of-Contents)
-- [isStatic](#isStatic)
-- [isPrimitive](#isPrimitive)
-- [isObject](#isObject)
-- [isObjectLike](#isObjectLike)
-- [getRawType](#getRawType)
-- [isPlainObject](#isPlainObject)
-- [isArray](#isArray)
-- [isRegExp](#isRegExp)
-- [isDate](#isDate)
-- [isNative](#isNative)
-- [isFunction](#isFunction)
-- [isLength](#isLength)
-- [isValidArrayIndex](#isValidArrayIndex)
-- [isArrayLike](#isArrayLike)
-- [hasOwn](#hasOwn)
-- [isEmpty](#isEmpty)
-- [inBrowser](#inBrowser)
-- [hasProto](#hasProto)
-- [userAgent](#userAgent)
-- [browserType](#browserType)
-- [toString](#toString)
-- [cached](#cached)
-- [isReserved](#isReserved)
-- [charCodeAt](#charCodeAt)
-- [camelize](#camelize)
-- [hyphenate](#hyphenate)
-- [capitalize](#capitalize)
-- [extend](#extend)
-
 ## isStatic
 
 > 检测数据是不是除了 symbol 外的原始数据
@@ -263,7 +223,7 @@ const hasProto = '__proto__' in {}
 const UA = inBrowser && window.navigator.userAgent.toLowerCase()
 ```
 
-## browserType
+## Browser
 
 > 使用正则去匹配 UA 中是否包含'msie'或者'trident'这两个字符串即可判断是否为 IE 浏览器
 
