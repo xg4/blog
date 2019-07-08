@@ -9,6 +9,7 @@ tags:
 ## Table of Contents
 
 - [Table of Contents](#Table-of-Contents)
+- [sleep](#sleep)
 - [isStatic](#isStatic)
 - [isPrimitive](#isPrimitive)
 - [isObject](#isObject)
@@ -37,6 +38,17 @@ tags:
 - [hyphenate](#hyphenate)
 - [capitalize](#capitalize)
 - [extend](#extend)
+- [deepClone](#deepClone)
+- [Array - unique](#Array---unique)
+- [isNaN](#isNaN)
+- [Array - max](#Array---max)
+- [Array - min](#Array---min)
+
+## sleep
+
+```js
+export const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+```
 
 ## isStatic
 
@@ -391,4 +403,64 @@ function extend(to, _from) {
   }
   return to
 }
+```
+
+## deepClone
+
+- 简单的深克隆
+
+```js
+function deepClone(target) {
+  return JSON.parse(JSON.stringify(target))
+}
+```
+
+- 完整的 deepClone 可参考 lodash
+
+  - [lodash - cloneDeep](https://github.com/lodash/lodash/blob/master/cloneDeep.js)
+
+## Array - unique
+
+- 基于 `Set` 简单实现
+
+```js
+function unique(arr) {
+  return [...new Set(arr)]
+}
+```
+
+## isNaN
+
+> 检查数据是否是非数字值  
+> 原生的 isNaN 会把参数转换成数字(valueof)，而 null、true、false 以及长度小于等于 1 的数组(元素为非 NaN 数据)会被转换成数字，这不是我想要的。Symbol 类型的数据不具有 valueof 接口，所以 isNaN 会抛出错误，这里放在后面，可避免错误
+
+```js
+function _isNaN(value) {
+  const type = typeof value
+  return !(type === 'string' || type === 'number') || isNaN(v)
+}
+```
+
+## Array - max
+
+> 求取数组中非 NaN 数据中的最大值
+
+```js
+function max(arr) {
+  arr = arr.filter(item => !_isNaN(item))
+  return arr.length ? Math.max.apply(null, arr) : undefined
+}
+//max([1, 2, '11', null, 'fdf', []]) ==> 11
+```
+
+## Array - min
+
+> 求取数组中非 NaN 数据中的最小值
+
+```js
+function min(arr) {
+  arr = arr.filter(item => !_isNaN(item))
+  return arr.length ? Math.min.apply(null, arr) : undefined
+}
+//min([1, 2, '11', null, 'fdf', []]) ==> 1
 ```
