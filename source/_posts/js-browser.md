@@ -11,6 +11,12 @@ tags:
 ## Table of Contents
 
 - [Table of Contents](#Table-of-Contents)
+- [Utils](#Utils)
+  - [download](#download)
+  - [fullScreen](#fullScreen)
+  - [requestAnimationFrame](#requestAnimationFrame)
+  - [performance](#performance)
+  - [event](#event)
 - [Window](#Window)
   - [getComputedStyle](#getComputedStyle)
 - [Document](#Document)
@@ -20,6 +26,165 @@ tags:
   - [Element.scrollIntoView()](#ElementscrollIntoView)
   - [ParentNode.append()](#ParentNodeappend)
   - [onWheel](#onWheel)
+
+## Utils
+
+### download
+
+利用 html5 a 标签的 download 属性进行下载
+
+```js
+const download = (rawData, name = 'file.json') => {
+  const url = URL.createObjectURL(rawData)
+  const a = document.createElement('a')
+  a.download = name
+  a.href = url
+  a.style.display = 'none'
+  // 兼容 firefox ，必须添加到 DOM 中才能触发下载
+  document.body.append(a) // document.body.appendChild(a)
+  a.click()
+  a.remove() // document.body.removeChild(a)
+  URL.revokeObjectURL(url)
+}
+```
+
+### fullScreen
+
+- toFullScreen
+
+  全屏
+
+  ```js
+  function toFullScreen(el = document.body) {
+    el.webkitRequestFullScreen
+      ? el.webkitRequestFullScreen()
+      : el.mozRequestFullScreen
+      ? el.mozRequestFullScreen()
+      : el.msRequestFullscreen
+      ? el.msRequestFullscreen()
+      : el.requestFullScreen
+      ? el.requestFullScreen()
+      : alert('浏览器不支持全屏')
+  }
+  ```
+
+- exitFullscreen
+
+  退出全屏
+
+  ```js
+  function exitFullscreen(el = parent.document) {
+    el.webkitCancelFullScreen
+      ? el.webkitCancelFullScreen()
+      : el.mozCancelFullScreen
+      ? el.mozCancelFullScreen()
+      : el.cancelFullScreen
+      ? el.cancelFullScreen()
+      : el.msExitFullscreen
+      ? el.msExitFullscreen()
+      : el.exitFullscreen
+      ? el.exitFullscreen()
+      : alert('切换失败,可尝试Esc退出')
+  }
+  ```
+
+### requestAnimationFrame
+
+新的动画 API，也可用于性能监控
+
+[GitHub - raf](https://github.com/chrisdickinson/raf)
+
+```js
+window.requestAnimationFrame =
+  window.requestAnimationFrame ||
+  window.webkitRequestAnimationFrame ||
+  window.mozRequestAnimationFrame ||
+  window.msRequestAnimationFrame ||
+  window.oRequestAnimationFrame ||
+  function(callback) {
+    window.setTimeout(callback, 1000 / 60)
+  }
+
+window.cancelAnimationFrame =
+  window.cancelAnimationFrame ||
+  Window.webkitCancelAnimationFrame ||
+  window.mozCancelAnimationFrame ||
+  window.msCancelAnimationFrame ||
+  window.oCancelAnimationFrame ||
+  function(id) {
+    window.clearTimeout(id)
+  }
+```
+
+### performance
+
+> 利用 performance.timing 进行性能分析
+
+```js
+window.onload = function() {
+  setTimeout(function() {
+    const t = performance.timing
+    console.log(
+      'DNS查询耗时 ：' + (t.domainLookupEnd - t.domainLookupStart).toFixed(0)
+    )
+    console.log('TCP链接耗时 ：' + (t.connectEnd - t.connectStart).toFixed(0))
+    console.log(
+      'request请求耗时 ：' + (t.responseEnd - t.responseStart).toFixed(0)
+    )
+    console.log(
+      '解析dom树耗时 ：' + (t.domComplete - t.domInteractive).toFixed(0)
+    )
+    console.log(
+      '白屏时间 ：' + (t.responseStart - t.navigationStart).toFixed(0)
+    )
+    console.log(
+      'domready时间 ：' +
+        (t.domContentLoadedEventEnd - t.navigationStart).toFixed(0)
+    )
+    console.log(
+      'onload时间 ：' + (t.loadEventEnd - t.navigationStart).toFixed(0)
+    )
+
+    if ((t = performance.memory)) {
+      console.log(
+        'js内存使用占比 ：' +
+          ((t.usedJSHeapSize / t.totalJSHeapSize) * 100).toFixed(2) +
+          '%'
+      )
+    }
+  })
+}
+```
+
+### event
+
+- 禁止某些键盘事件
+
+  ```js
+  document.addEventListener('keydown', function(event) {
+    return (
+      !(
+        112 == event.keyCode || //F1
+        123 == event.keyCode || //F12
+        (event.ctrlKey && 82 == event.keyCode) || //ctrl + R
+        (event.ctrlKey && 78 == event.keyCode) || //ctrl + N
+        (event.shiftKey && 121 == event.keyCode) || //shift + F10
+        (event.altKey && 115 == event.keyCode) || //alt + F4
+        ('A' == event.srcElement.tagName && event.shiftKey)
+      ) || (event.returnValue = false) //shift + 点击a标签
+    )
+  })
+  ```
+
+- 禁止右键、选择、复制
+
+  ```js
+  ;['contextmenu', 'selectstart', 'copy'].forEach(function(eventName) {
+    document.addEventListener(eventName, function(event) {
+      return (event.returnValue = false)
+    })
+  })
+  ```
 
 ## Window
 
