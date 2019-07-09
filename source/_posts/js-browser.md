@@ -8,28 +8,24 @@ tags:
   - document
 ---
 
+> 浏览器环境下的 javascript API、Utils
+
 ## Table of Contents
 
 - [Table of Contents](#Table-of-Contents)
-- [Utils](#Utils)
-  - [download](#download)
-  - [fullScreen](#fullScreen)
-  - [requestAnimationFrame](#requestAnimationFrame)
-  - [performance](#performance)
-  - [event](#event)
-- [Window](#Window)
-  - [getComputedStyle](#getComputedStyle)
-- [Document](#Document)
-  - [Web Animations](#Web-Animations)
-  - [Event](#Event)
-  - [IntersectionObserver](#IntersectionObserver)
-  - [Element.scrollIntoView()](#ElementscrollIntoView)
-  - [ParentNode.append()](#ParentNodeappend)
-  - [onWheel](#onWheel)
+- [download](#download)
+- [fullScreen](#fullScreen)
+- [requestAnimationFrame](#requestAnimationFrame)
+- [performance](#performance)
+- [Event](#Event)
+- [getComputedStyle](#getComputedStyle)
+- [Animations](#Animations)
+- [IntersectionObserver](#IntersectionObserver)
+- [Element.scrollIntoView()](#ElementscrollIntoView)
+- [ParentNode.append()](#ParentNodeappend)
+- [onWheel](#onWheel)
 
-## Utils
-
-### download
+## download
 
 利用 html5 a 标签的 download 属性进行下载
 
@@ -48,7 +44,7 @@ const download = (rawData, name = 'file.json') => {
 }
 ```
 
-### fullScreen
+## fullScreen
 
 - toFullScreen
 
@@ -88,7 +84,7 @@ const download = (rawData, name = 'file.json') => {
   }
   ```
 
-### requestAnimationFrame
+## requestAnimationFrame
 
 新的动画 API，也可用于性能监控
 
@@ -116,7 +112,7 @@ window.cancelAnimationFrame =
   }
 ```
 
-### performance
+## performance
 
 > 利用 performance.timing 进行性能分析
 
@@ -156,7 +152,7 @@ window.onload = function() {
 }
 ```
 
-### event
+## Event
 
 - 禁止某些键盘事件
 
@@ -186,13 +182,15 @@ window.onload = function() {
   })
   ```
 
-## Window
+- [transitionend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/transitionend_event)
 
-### getComputedStyle
+- [animationend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/animationend_event)
+
+## getComputedStyle
 
 > [MDN - getComputedStyle](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle)
 
-- 返回的 CSSStyleDeclaration 对象将包含所有受支持的 CSS 属性长名称的活动值。示例名称是 border-bottom-width，border-width 和 border 是示例速记属性名称。仅使用像 font-size 这样的名字来查询值是最安全的。 查询诸如 font 等简写名称不适用于大多数浏览器
+- window.getComputedStyle 返回的 CSSStyleDeclaration 对象将包含所有受支持的 CSS 属性长名称的活动值。示例名称是 border-bottom-width，border-width 和 border 是示例速记属性名称。仅使用像 font-size 这样的名字来查询值是最安全的。 查询诸如 font 等简写名称不适用于大多数浏览器
 
 - CSS 属性值可以使用 `getPropertyValue(propName)` API 或直接索引到对象，如 `cs['z-index']` 或 `cs.zIndex`
 
@@ -231,32 +229,24 @@ window.onload = function() {
   </script>
   ```
 
-## Document
+## Animations
 
-### Web Animations
-
-> [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
+> [MDN - Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
 
 [GitHub polyfill](https://github.com/web-animations/web-animations-js)
 
-### Event
-
-- [transitionend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/transitionend_event)
-
-- [animationend](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/animationend_event)
-
-### IntersectionObserver
+## IntersectionObserver
 
 > [MDN](https://developer.mozilla.org/zh-CN/docs/Web/API/IntersectionObserver)  
 > [阮一峰](http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html)
 
 [Github polyfill](https://github.com/w3c/IntersectionObserver)
 
-### Element.scrollIntoView()
+## Element.scrollIntoView()
 
 > [MDN - Element.scrollIntoView()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView)
 
-### ParentNode.append()
+## ParentNode.append()
 
 > [MDN - ParentNode.append()](https://developer.mozilla.org/zh-CN/docs/Web/API/ParentNode/append)
 
@@ -292,7 +282,7 @@ window.onload = function() {
   })([Element.prototype, Document.prototype, DocumentFragment.prototype])
   ```
 
-### onWheel
+## onWheel
 
 > 兼容浏览器 wheel 事件
 
