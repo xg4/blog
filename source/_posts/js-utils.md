@@ -6,15 +6,18 @@ tags:
   - util
 ---
 
+> javascript 语法基础 ecmascript 的 Utils
+
 ## Table of Contents
 
 - [Table of Contents](#Table-of-Contents)
+- [async/await-try/catch](#asyncawait-trycatch)
 - [sleep](#sleep)
 - [isStatic](#isStatic)
 - [isPrimitive](#isPrimitive)
 - [isObject](#isObject)
 - [isObjectLike](#isObjectLike)
-- [getRawType](#getRawType)
+- [toString](#toString)
 - [isPlainObject](#isPlainObject)
 - [isArray](#isArray)
 - [isRegExp](#isRegExp)
@@ -30,7 +33,7 @@ tags:
 - [hasProto](#hasProto)
 - [userAgent](#userAgent)
 - [browserType](#browserType)
-- [toString](#toString)
+- [toString](#toString-1)
 - [cached](#cached)
 - [isReserved](#isReserved)
 - [charCodeAt](#charCodeAt)
@@ -43,6 +46,16 @@ tags:
 - [isNaN](#isNaN)
 - [Array - max](#Array---max)
 - [Array - min](#Array---min)
+
+## async/await-try/catch
+
+简化 promise 函数的异常捕获，类 node API
+
+```js
+export default function errorCaptured(promiseFunc) {
+  return promiseFunc.then((...args) => [null, ...args]).catch(err => [err])
+}
+```
 
 ## sleep
 
@@ -98,15 +111,15 @@ function isObjectLike(value) {
 }
 ```
 
-## getRawType
+## toString
 
 > 获取数据类型，返回结果为 Number、String、Object、Array 等
 
 ```js
-function getRawType(value) {
+function _toString(value) {
   return Object.prototype.toString.call(value).slice(8, -1)
 }
-//getoRawType([]) ==> Array
+// _toString([]) ==> Array
 ```
 
 ## isPlainObject
