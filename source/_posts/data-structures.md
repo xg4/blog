@@ -8,17 +8,17 @@ tags:
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [Stack](#stack)
-- [Queue](#queue)
-  - [Priority Queue](#priority-queue)
-- [Linked List](#linked-list)
+- [Table of Contents](#Table-of-Contents)
+- [Stack](#Stack)
+- [Queue](#Queue)
+  - [Priority Queue](#Priority-Queue)
+- [Linked List](#Linked-List)
   - [单向链表](#%E5%8D%95%E5%90%91%E9%93%BE%E8%A1%A8)
   - [双向链表](#%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8)
 - [集合](#%E9%9B%86%E5%90%88)
-- [Dictionary/Map](#dictionarymap)
-- [Hash Table](#hash-table)
-  - [Hash](#hash)
+- [Dictionary/Map](#DictionaryMap)
+- [Hash Table](#Hash-Table)
+  - [Hash](#Hash)
   - [冲突](#%E5%86%B2%E7%AA%81)
 
 ## Stack
@@ -51,7 +51,7 @@ class Stack {
   }
 
   isEmpty() {
-    return !!this.length
+    return !this.length
   }
 
   size() {
@@ -94,7 +94,7 @@ class Queue {
   }
 
   isEmpty() {
-    return !!this.length
+    return !this.length
   }
 
   size() {
@@ -149,7 +149,7 @@ class Queue {
   }
 
   isEmpty() {
-    return !!this.length
+    return !this.length
   }
 
   size() {
