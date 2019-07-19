@@ -21,6 +21,14 @@ tags:
 调用对象下面的方法，自动绑定这个对象，如果没有，则为 `undefined`
 
 ```js
+function hello() {
+  console.log(this)
+}
+
+hello()
+// 严格模式下是 undefined
+// 非严格模式下是 window
+
 const foo = {
   name: 'foo',
   hello: function() {
@@ -31,7 +39,7 @@ const foo = {
 foo.hello() // foo
 ```
 
-2. 显式绑定（call，apply，bind）
+1. 显式绑定（call，apply，bind）
 
 ```js
 const foo = {
@@ -51,7 +59,7 @@ const newFn = foo.hello.bind(bar)
 newFn() // bar
 ```
 
-3. new 绑定
+1. new 绑定
 
 ```js
 function Test() {
@@ -60,7 +68,7 @@ function Test() {
 new Test() // this 指向 new 之后的实例
 ```
 
-4. 箭头函数
+1. 箭头函数
 
 箭头函数中的 `this` 是父作用域中的 `this`
 
