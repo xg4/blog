@@ -10,42 +10,54 @@ tags:
 
 ## Table of Contents
 
-- [Table of Contents](#Table-of-Contents)
+- [Table of Contents](#table-of-contents)
+- [randomInt](#randomint)
 - [async/await-try/catch](#asyncawait-trycatch)
 - [sleep](#sleep)
-- [isStatic](#isStatic)
-- [isPrimitive](#isPrimitive)
-- [isObject](#isObject)
-- [isObjectLike](#isObjectLike)
-- [toString](#toString)
-- [isPlainObject](#isPlainObject)
-- [isArray](#isArray)
-- [isRegExp](#isRegExp)
-- [isDate](#isDate)
-- [isNative](#isNative)
-- [isFunction](#isFunction)
-- [isLength](#isLength)
-- [isValidArrayIndex](#isValidArrayIndex)
-- [isArrayLike](#isArrayLike)
-- [hasOwn](#hasOwn)
-- [isEmpty](#isEmpty)
-- [inBrowser](#inBrowser)
-- [hasProto](#hasProto)
-- [userAgent](#userAgent)
-- [browserType](#browserType)
-- [toString](#toString-1)
+- [isStatic](#isstatic)
+- [isPrimitive](#isprimitive)
+- [isObject](#isobject)
+- [isObjectLike](#isobjectlike)
+- [toString](#tostring)
+- [isPlainObject](#isplainobject)
+- [isArray](#isarray)
+- [isRegExp](#isregexp)
+- [isDate](#isdate)
+- [isNative](#isnative)
+- [isFunction](#isfunction)
+- [isLength](#islength)
+- [isValidArrayIndex](#isvalidarrayindex)
+- [isArrayLike](#isarraylike)
+- [hasOwn](#hasown)
+- [isEmpty](#isempty)
+- [inBrowser](#inbrowser)
+- [hasProto](#hasproto)
+- [userAgent](#useragent)
+- [browserType](#browsertype)
+- [toString](#tostring-1)
 - [cached](#cached)
-- [isReserved](#isReserved)
-- [charCodeAt](#charCodeAt)
+- [isReserved](#isreserved)
+- [charCodeAt](#charcodeat)
 - [camelize](#camelize)
 - [hyphenate](#hyphenate)
 - [capitalize](#capitalize)
 - [extend](#extend)
-- [deepClone](#deepClone)
-- [Array - unique](#Array---unique)
-- [isNaN](#isNaN)
-- [Array - max](#Array---max)
-- [Array - min](#Array---min)
+- [deepClone](#deepclone)
+- [Array - unique](#array---unique)
+- [isNaN](#isnan)
+- [Array - max](#array---max)
+- [Array - min](#array---min)
+
+## randomInt
+
+```js
+export function randomInt(min, max) {
+  if (min > max) {
+    ;[min, max] = [max, min]
+  }
+  return Math.floor(min + Math.random() * (max - min + 1))
+}
+```
 
 ## async/await-try/catch
 
