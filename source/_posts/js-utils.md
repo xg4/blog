@@ -6,7 +6,7 @@ tags:
   - util
 ---
 
-> javascript 语法基础 ecmascript 的 Utils
+> javascript 语法基础 ECMAScript 的 Utils
 
 ## Table of Contents
 
