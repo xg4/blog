@@ -11,6 +11,7 @@ tags:
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [shuffle](#shuffle)
 - [randomInt](#randomint)
 - [async/await-try/catch](#asyncawait-trycatch)
 - [sleep](#sleep)
@@ -47,6 +48,21 @@ tags:
 - [isNaN](#isnan)
 - [Array - max](#array---max)
 - [Array - min](#array---min)
+
+## shuffle
+
+> Fisher–Yates 乱序算法
+
+```js
+function shuffle(arr) {
+  let length = arr.length
+  while (length > 1) {
+    let index = Math.floor(Math.random() * length--)
+    ;[arr[length], arr[index]] = [arr[index], arr[length]]
+  }
+  return arr
+}
+```
 
 ## randomInt
 
