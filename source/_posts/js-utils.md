@@ -11,6 +11,8 @@ tags:
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [throttle](#throttle)
+- [debounce](#debounce)
 - [shuffle](#shuffle)
 - [randomInt](#randomint)
 - [async/await-try/catch](#asyncawait-trycatch)
@@ -48,6 +50,47 @@ tags:
 - [isNaN](#isnan)
 - [Array - max](#array---max)
 - [Array - min](#array---min)
+
+## throttle
+
+> 函数节流
+
+```js
+function throttle(fn, delay = 0) {
+  let last
+  let timer
+  return function() {
+    const now = Date.now()
+    if (last && now < last + delay) {
+      clearTimeout(timer)
+
+      timer = setTimeout(() => {
+        fn.apply(this, arguments)
+        last = now
+      }, delay)
+    } else {
+      fn.apply(this, arguments)
+      last = now
+    }
+  }
+}
+```
+
+## debounce
+
+> 函数防抖
+
+```js
+function debounce(fn, delay = 0) {
+  let timer = null
+  return function() {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      fn.apply(this, arguments)
+    }, delay)
+  }
+}
+```
 
 ## shuffle
 
