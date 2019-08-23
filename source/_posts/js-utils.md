@@ -11,6 +11,7 @@ tags:
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Number Conversion](#number-conversion)
 - [throttle](#throttle)
 - [debounce](#debounce)
 - [shuffle](#shuffle)
@@ -50,6 +51,17 @@ tags:
 - [isNaN](#isnan)
 - [Array - max](#array---max)
 - [Array - min](#array---min)
+
+## Number Conversion
+
+```js
+// 十进制 转 其他进制
+;(10).toString(2) // 10 转 2
+;(10).toString(8) // 10 转 8
+
+// 其他进制 转 十进制
+parseInt(1010, 2) // 10
+```
 
 ## throttle
 
