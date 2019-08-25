@@ -6,14 +6,38 @@ tags: html
 
 ## Table of Contents
 
-- [Table of Contents](#Table-of-Contents)
+- [Table of Contents](#table-of-contents)
+- [a](#a)
+  - [rel](#rel)
 - [html](#html)
 - [ruby](#ruby)
   - [example](#example)
 - [figure](#figure)
-- [HTML5 结构化元素](#HTML5-%E7%BB%93%E6%9E%84%E5%8C%96%E5%85%83%E7%B4%A0)
-- [Meta](#Meta)
-- [Link](#Link)
+- [HTML5 结构化元素](#html5-%e7%bb%93%e6%9e%84%e5%8c%96%e5%85%83%e7%b4%a0)
+- [Meta](#meta)
+- [Link](#link)
+
+## a
+
+### rel
+
+- 赞助商链接
+
+  ```html
+  <a rel="sponsored"></a>
+  ```
+
+- 用户提供的链接
+
+  ```html
+  <a rel="ugc"></a>
+  ```
+
+- 完全忽略该链接
+
+  ```html
+  <a rel="nofollow"></a>
+  ```
 
 ## html
 
