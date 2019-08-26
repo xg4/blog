@@ -12,18 +12,102 @@ tags:
 
 ## Table of Contents
 
-- [Table of Contents](#Table-of-Contents)
+- [Table of Contents](#table-of-contents)
+- [insertAdjacentElement](#insertadjacentelement)
+- [getBoundingClientRect](#getboundingclientrect)
+- [contains](#contains)
+- [compareDocumentPosition](#comparedocumentposition)
+- [MutationObserver](#mutationobserver)
+- [getBattery](#getbattery)
 - [download](#download)
-- [fullScreen](#fullScreen)
-- [requestAnimationFrame](#requestAnimationFrame)
+- [fullScreen](#fullscreen)
+- [requestAnimationFrame](#requestanimationframe)
 - [performance](#performance)
-- [Event](#Event)
-- [getComputedStyle](#getComputedStyle)
-- [Animations](#Animations)
-- [IntersectionObserver](#IntersectionObserver)
-- [Element.scrollIntoView()](#ElementscrollIntoView)
-- [ParentNode.append()](#ParentNodeappend)
-- [onWheel](#onWheel)
+- [Event](#event)
+- [getComputedStyle](#getcomputedstyle)
+- [Animations](#animations)
+- [IntersectionObserver](#intersectionobserver)
+- [scrollIntoView](#scrollintoview)
+- [append](#append)
+- [onWheel](#onwheel)
+
+## insertAdjacentElement
+
+> 可以通过不同的参数实现 `jQuery` 的 `append` | `prepend` | `after` | `before`
+
+```html
+<div id="parent"></div>
+```
+
+```js
+const parent = document.getElementById('parent')
+const node = document.createElement('span')
+// 插入到指定元素内部的尾部
+// 等价于 $(parent).append(node)
+parent.insertAdjacentElement('beforeend', node)
+
+// 插入到指定元素内部的头部
+// 等价于 $(parent).prepend(node)
+parent.insertAdjacentElement('afterbegin', node)
+
+// 插入到指定元素后面
+// 等价于 $(parent).after(node)
+parent.insertAdjacentElement('afterend', node)
+
+// 插入到指定元素前面
+// 等价于 $(parent).after(node)
+parent.insertAdjacentElement('beforebegin', node)
+```
+
+## getBoundingClientRect
+
+> element.getBoundingClientRect() 获取元素相对浏览器左上角的偏移量以及元素尺寸信息, 返回值是一个 rect 对象, 其中包括:
+> left: 元素左上角距离浏览器左上角的 X 轴偏移  
+> top: 元素左上角距离浏览器左上角的 Y 轴偏移  
+> width: 元素宽度
+> height: 元素高度  
+> right: 元素右下角距离浏览器左上角的 X 轴偏移）  
+> bottom: 元素右下角距离浏览器左上角的 Y 轴偏移  
+> x: 同 left  
+> y: 同 top
+
+可以判断元素是否已经进入可视区域
+
+**`getBoundingClientRect` 会受到 `transform` 的影响, 比如你的元素设置了 `transform:scale(2)`, 那么 `getBoundingClientRect` 返回的 `width` 会是元素实际宽度的 2 倍, `top` 等位置信息也会因为元素尺寸变化而发生变化**
+
+## contains
+
+> node.contains(otherNode) 检查传入节点是否为该节点的子孙节点
+
+```js
+function isInPage(node) {
+  return node === document.body ? false : document.body.contains(node)
+}
+```
+
+## compareDocumentPosition
+
+> node.compareDocumentPosition(otherNode) 可以比较当前节点与任意文档中的另一个节点的位置关系
+
+## MutationObserver
+
+> 监听 DOM 元素的变化触发回调，可监视的变化有：属性（attribute）/文本（character），同时支持监听子孙节点（childList/subtree）
+
+```js
+const observer = new MutationObserver(() => {
+  console.log('change')
+})
+
+// 监听
+observer.observe(el, { childList: true, subtree: true })
+
+// 销毁
+observer.disconnect()
+```
+
+## getBattery
+
+> 电池状态 navigator.getBattery()
 
 ## download
 
@@ -242,11 +326,11 @@ window.onload = function() {
 
 [Github polyfill](https://github.com/w3c/IntersectionObserver)
 
-## Element.scrollIntoView()
+## scrollIntoView
 
 > [MDN - Element.scrollIntoView()](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollIntoView)
 
-## ParentNode.append()
+## append
 
 > [MDN - ParentNode.append()](https://developer.mozilla.org/zh-CN/docs/Web/API/ParentNode/append)
 
