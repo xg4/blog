@@ -8,6 +8,11 @@ tags:
 
 > [Docker 入门教程 - 阮一峰](http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html)
 
+- [install](#install)
+  - [ubuntu](#ubuntu)
+  - [更新/卸载](#%e6%9b%b4%e6%96%b0%e5%8d%b8%e8%bd%bd)
+  - [添加到用户组（可选项）](#%e6%b7%bb%e5%8a%a0%e5%88%b0%e7%94%a8%e6%88%b7%e7%bb%84%e5%8f%af%e9%80%89%e9%a1%b9)
+  - [仓库镜像地址](#%e4%bb%93%e5%ba%93%e9%95%9c%e5%83%8f%e5%9c%b0%e5%9d%80)
 - [login / logout](#login--logout)
 - [image](#image)
   - [images](#images)
@@ -36,6 +41,62 @@ tags:
   - [cp](#cp)
   - [commit](#commit)
   - [diff](#diff)
+
+## install
+
+### ubuntu
+
+```bash
+# 更新包
+$ sudo apt update
+
+# 安装https支持包
+$ sudo apt install apt-transport-https ca-certificates curl software-properties-common
+
+# 添加Docker官方GPG key
+$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+# 添加stable版的repository
+$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+# 更新apt
+$ sudo apt update
+
+# 安装最新的Docker CE
+$ sudo apt install docker-ce
+
+$ sudo systemctl status docker
+```
+
+### 更新/卸载
+
+```bash
+# 跟新
+$ sudo apt upgrade
+
+# 卸载Docker
+$ sudo apt-get purge docker-ce
+# 删除images、containers和volumes
+$ sudo rm -rf /var/lib/docker
+```
+
+### 添加到用户组（可选项）
+
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+
+sudo service docker restart
+```
+
+### 仓库镜像地址
+
+```bash
+--registry-mirror=https://jxus37ad.mirror.aliyuncs.com
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
 
 ## login / logout
 
