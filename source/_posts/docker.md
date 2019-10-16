@@ -13,6 +13,7 @@ tags:
   - [更新/卸载](#%e6%9b%b4%e6%96%b0%e5%8d%b8%e8%bd%bd)
   - [添加到用户组（可选项）](#%e6%b7%bb%e5%8a%a0%e5%88%b0%e7%94%a8%e6%88%b7%e7%bb%84%e5%8f%af%e9%80%89%e9%a1%b9)
   - [仓库镜像地址](#%e4%bb%93%e5%ba%93%e9%95%9c%e5%83%8f%e5%9c%b0%e5%9d%80)
+  - [docker-compose](#docker-compose)
 - [login / logout](#login--logout)
 - [image](#image)
   - [images](#images)
@@ -96,6 +97,19 @@ sudo service docker restart
 
 sudo systemctl daemon-reload
 sudo systemctl restart docker
+```
+
+### docker-compose
+
+```bash
+# download
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# permissions
+sudo chmod +x /usr/local/bin/docker-compose
+
+# check
+docker-compose --version
 ```
 
 ## login / logout
