@@ -101,6 +101,8 @@ sudo systemctl restart docker
 
 ### docker-compose
 
+[docker compose install](https://docs.docker.com/compose/install/)
+
 ```bash
 # download
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
