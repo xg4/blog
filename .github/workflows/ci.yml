@@ -34,5 +34,5 @@ jobs:
           FOLDER: public
           CLEAN: true
           REPOSITORY_NAME: xg4/xg4.github.io
-          GIT_CONFIG_NAME: 'github-actions[bot]'
-          GIT_CONFIG_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+          GIT_CONFIG_NAME: github-actions[bot]
+          GIT_CONFIG_EMAIL: github-actions[bot]@users.noreply.github.com
