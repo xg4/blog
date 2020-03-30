@@ -16,7 +16,7 @@ jobs:
           submodules: true
 
       - name: Node.js
-        uses: actions/setup-node@master
+        uses: actions/setup-node@v1
         with:
           node-version: '12.x'
 
@@ -34,3 +34,5 @@ jobs:
           FOLDER: public
           CLEAN: true
           REPOSITORY_NAME: xg4/xg4.github.io
+          GIT_CONFIG_NAME: 'github-actions[bot]'
+          GIT_CONFIG_EMAIL: 'github-actions[bot]@users.noreply.github.com'
