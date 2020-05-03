@@ -10,18 +10,18 @@ tags: git
 - [ssh-keygen](#ssh-keygen)
 - [配置 - config](#%e9%85%8d%e7%bd%ae---config)
 - [别名 - alias](#%e5%88%ab%e5%90%8d---alias)
-- [日志 - log](#%e6%97%a5%e5%bf%97---log)
+- [克隆 - clone](#%e5%85%8b%e9%9a%86---clone)
 - [初始化 - initial](#%e5%88%9d%e5%a7%8b%e5%8c%96---initial)
+- [远程 - remote](#%e8%bf%9c%e7%a8%8b---remote)
+- [推送 - push](#%e6%8e%a8%e9%80%81---push)
+  - [推送到远程分支](#%e6%8e%a8%e9%80%81%e5%88%b0%e8%bf%9c%e7%a8%8b%e5%88%86%e6%94%af)
+- [日志 - log](#%e6%97%a5%e5%bf%97---log)
 - [比较 - diff](#%e6%af%94%e8%be%83---diff)
 - [分支 - branch](#%e5%88%86%e6%94%af---branch)
 - [标签 - tag](#%e6%a0%87%e7%ad%be---tag)
 - [回滚 - reset](#%e5%9b%9e%e6%bb%9a---reset)
 - [恢复 - checkout](#%e6%81%a2%e5%a4%8d---checkout)
-- [隐藏 - stash](#%e9%9a%90%e8%97%8f---stash)
-- [克隆 - clone](#%e5%85%8b%e9%9a%86---clone)
-- [推送 - push](#%e6%8e%a8%e9%80%81---push)
-  - [推送到远程分支](#%e6%8e%a8%e9%80%81%e5%88%b0%e8%bf%9c%e7%a8%8b%e5%88%86%e6%94%af)
-- [远程 - remote](#%e8%bf%9c%e7%a8%8b---remote)
+- [暂存 - stash](#%e6%9a%82%e5%ad%98---stash)
 - [忽略 - ignore](#%e5%bf%bd%e7%95%a5---ignore)
 - [删除 - remove](#%e5%88%a0%e9%99%a4---remove)
 - [子模块 - submodule](#%e5%ad%90%e6%a8%a1%e5%9d%97---submodule)
@@ -67,26 +67,23 @@ git config --global alias.cm commit
 git config --global alias.br branch
 ```
 
-## 日志 - log
+## 克隆 - clone
 
 ```bash
-# 查看完整历史提交记录
-git log
+# 拉取远程仓库，支持 git:// (ssh), <https://> 等协议
+git clone <url>
 
-# 显示最后一次提交信息
-git config --global alias.last 'log -1'
+# 仓库太大，拉取最近的一个 revision
+git clone <url> --depth=1
 
-# format log
-git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+# 克隆某个分支
+git clone -b dev <url>
 
-# 列出提交者贡献数量
-git shortlog -sn
+# 递归克隆，如果有 `submodule` 一并克隆
+git clone --recursive <url>
 
-# 查看分支合并图
-git log --graph
-
-# 显示简要版的提交日志
-git log --pretty=oneline
+# 继续拉取历史版本
+git fetch --unshallow
 ```
 
 ## 初始化 - initial
@@ -109,6 +106,74 @@ git commit -v
 
 # 查看工作区的状态
 git status
+```
+
+## 远程 - remote
+
+```bash
+# 关联远程仓库
+git remote add origin <url>
+
+# 查看远程库信息
+git remote -v
+
+# 拉取远程仓库分支
+git checkout -b branch-name origin/branch-name
+
+# 拉取，不进行合并
+git fetch origin master
+
+# 等效于 git fetch && git merge
+git pull
+git pull origin remove_branch:local_branch
+```
+
+## 推送 - push
+
+```bash
+# 远程已有 remote_branch 分支，并且已经关联本地分支 local_branch
+git push
+
+# 强制推送到远程分支
+git push -f
+
+# 远程已有 remote_branch 分支但未关联本地分支 local_branch， -u 首次推送
+git push -u origin/remote_branch
+
+# 远程没有 remote_branch 分支，并且没有关联本地分支 local_branch
+git push origin local_branch:remote_branch
+```
+
+### 推送到远程分支
+
+1. `git push origin branch-name`，如果推送失败，先用 `git pull` 拉取并合并
+
+2. 如果合并有冲突，则解决冲突，并在本地提交
+
+3. 没有冲突或者解决掉冲突后，再用 `git push origin branch-name` 推送就能成功！
+
+**如果 `git pull` 提示 "no tracking information" , 则说明本地分支和远程分支的链接关系没有创建，用命令 `git branch --set-upstream branch-name origin/branch-name`**
+
+## 日志 - log
+
+```bash
+# 查看完整历史提交记录
+git log
+
+# 显示最后一次提交信息
+git config --global alias.last 'log -1'
+
+# format log
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# 列出提交者贡献数量
+git shortlog -sn
+
+# 查看分支合并图
+git log --graph
+
+# 显示简要版的提交日志
+git log --pretty=oneline
 ```
 
 ## 比较 - diff
@@ -243,7 +308,7 @@ git reset HEAD ./filename
 git checkout -- ./filename
 ```
 
-## 隐藏 - stash
+## 暂存 - stash
 
 ```bash
 # 将当前工作区修改文件“储藏”起来
@@ -262,71 +327,6 @@ git stash pop
 
 # 恢复指定的 stash
 git stash apply stash@{0}
-```
-
-## 克隆 - clone
-
-```bash
-# 拉取远程仓库，支持 git:// (ssh), <https://> 等协议
-git clone <url>
-
-# 仓库太大，拉取最近的一个 revision
-git clone <url> --depth=1
-
-# 克隆某个分支
-git clone -b dev <url>
-
-# 递归克隆，如果有 `submodule` 一并克隆
-git clone --recursive <url>
-
-# 继续拉取历史版本
-git fetch --unshallow
-```
-
-## 推送 - push
-
-```bash
-# 远程已有 remote_branch 分支，并且已经关联本地分支 local_branch
-git push
-
-# 强制推送到远程分支
-git push -f
-
-# 远程已有 remote_branch 分支但未关联本地分支 local_branch， -u 首次推送
-git push -u origin/remote_branch
-
-# 远程没有 remote_branch 分支，并且没有关联本地分支 local_branch
-git push origin local_branch:remote_branch
-```
-
-### 推送到远程分支
-
-1. `git push origin branch-name`，如果推送失败，先用 `git pull` 拉取并合并
-
-2. 如果合并有冲突，则解决冲突，并在本地提交
-
-3. 没有冲突或者解决掉冲突后，再用 `git push origin branch-name` 推送就能成功！
-
-**如果 `git pull` 提示 "no tracking information" , 则说明本地分支和远程分支的链接关系没有创建，用命令 `git branch --set-upstream branch-name origin/branch-name`**
-
-## 远程 - remote
-
-```bash
-# 关联远程仓库
-git remote add origin <url>
-
-# 查看远程库信息
-git remote -v
-
-# 拉取远程仓库分支
-git checkout -b branch-name origin/branch-name
-
-# 拉取，不进行合并
-git fetch origin master
-
-# 等效于 git fetch && git merge
-git pull
-git pull origin remove_branch:local_branch
 ```
 
 ## 忽略 - ignore
