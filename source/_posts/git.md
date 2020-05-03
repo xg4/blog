@@ -7,23 +7,24 @@ tags: git
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
-- [ssh](#ssh)
-- [config](#config)
-  - [alias](#alias)
-  - [log](#log)
-- [initial](#initial)
-- [diff](#diff)
-- [branch](#branch)
-- [tag](#tag)
-- [reset](#reset)
-  - [checkout](#checkout)
-- [stash](#stash)
-- [clone](#clone)
-- [push](#push)
-- [remote](#remote)
-- [ignore](#ignore)
-- [remove](#remove)
-- [submodule](#submodule)
+- [ssh-keygen](#ssh-keygen)
+- [配置 - config](#%e9%85%8d%e7%bd%ae---config)
+- [别名 - alias](#%e5%88%ab%e5%90%8d---alias)
+- [日志 - log](#%e6%97%a5%e5%bf%97---log)
+- [初始化 - initial](#%e5%88%9d%e5%a7%8b%e5%8c%96---initial)
+- [比较 - diff](#%e6%af%94%e8%be%83---diff)
+- [分支 - branch](#%e5%88%86%e6%94%af---branch)
+- [标签 - tag](#%e6%a0%87%e7%ad%be---tag)
+- [回滚 - reset](#%e5%9b%9e%e6%bb%9a---reset)
+- [恢复 - checkout](#%e6%81%a2%e5%a4%8d---checkout)
+- [隐藏 - stash](#%e9%9a%90%e8%97%8f---stash)
+- [克隆 - clone](#%e5%85%8b%e9%9a%86---clone)
+- [推送 - push](#%e6%8e%a8%e9%80%81---push)
+  - [推送到远程分支](#%e6%8e%a8%e9%80%81%e5%88%b0%e8%bf%9c%e7%a8%8b%e5%88%86%e6%94%af)
+- [远程 - remote](#%e8%bf%9c%e7%a8%8b---remote)
+- [忽略 - ignore](#%e5%bf%bd%e7%95%a5---ignore)
+- [删除 - remove](#%e5%88%a0%e9%99%a4---remove)
+- [子模块 - submodule](#%e5%ad%90%e6%a8%a1%e5%9d%97---submodule)
   - [添加子模块](#%e6%b7%bb%e5%8a%a0%e5%ad%90%e6%a8%a1%e5%9d%97)
   - [查看子模块](#%e6%9f%a5%e7%9c%8b%e5%ad%90%e6%a8%a1%e5%9d%97)
   - [更新子模块](#%e6%9b%b4%e6%96%b0%e5%ad%90%e6%a8%a1%e5%9d%97)
@@ -31,32 +32,30 @@ tags: git
   - [修改子模块](#%e4%bf%ae%e6%94%b9%e5%ad%90%e6%a8%a1%e5%9d%97)
   - [删除子模块](#%e5%88%a0%e9%99%a4%e5%ad%90%e6%a8%a1%e5%9d%97)
 
-## ssh
+## ssh-keygen
 
 ```bash
-ssh-keygen -t rsa -C "xingor4@gmail.com"
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+# 默认目录 公钥
+cat ~/.ssh/id_rsa.pub
 ```
 
-- 用户主目录下找到 `.ssh` 目录 (`~/.ssh`)，id_rsa 和 id_rsa.pub 两个文件
+- [GitHub](https://github.com) `Add SSH Key` 粘贴 `id_rsa.pub` 文件的内容
 
-- id_rsa 是私钥，不能泄露出去，id_rsa.pub 是公钥，可以放心地告诉任何人
+- **检验是否连接上 GitHub `ssh git@github.com`**
 
-- GitHub “Add SSH Key” 粘贴 id_rsa.pub 文件的内容
-
-- **检验是否连接上 GitHub `$ ssh git@github.com`**
-
-## config
+## 配置 - config
 
 ```bash
 # 查看配置列表
-
 git config -l
 
-git config --global user.name "xg4"
-git config --global user.email "xingor4@gmail.com"
+git config --global user.name "your_name"
+git config --global user.email "your_email@example.com"
 ```
 
-### alias
+## 别名 - alias
 
 ```bash
 git config --global alias.st status
@@ -68,7 +67,7 @@ git config --global alias.cm commit
 git config --global alias.br branch
 ```
 
-### log
+## 日志 - log
 
 ```bash
 # 查看完整历史提交记录
@@ -85,25 +84,34 @@ git shortlog -sn
 
 # 查看分支合并图
 git log --graph
+
+# 显示简要版的提交日志
+git log --pretty=oneline
 ```
 
-## initial
+## 初始化 - initial
 
-- `git init` : 初始化 git 仓库
+```bash
+# 初始化 git 仓库
+git init
 
-- `git add <filename>` : 添加文件到暂存区
+# 添加文件到暂存区
+git add <filename>
 
-- `git add .` : 递归添加整个目录到暂存区
+# 递归添加整个目录到暂存区
+git add .
 
-- `git commit -m 'msg'` : 提交暂存区内容到仓库
+# 提交暂存区内容到仓库
+git commit -m 'commit msg'
 
-- `git commit -v` : 提交显示 diff 变化
+# 提交显示 diff 变化
+git commit -v
 
-- `git status` : 查看工作区的状态
+# 查看工作区的状态
+git status
+```
 
-- `git diff` : 查看修改内容，比较差异
-
-## diff
+## 比较 - diff
 
 ```bash
 # 查看所有文件改动
@@ -120,203 +128,228 @@ git log ./filename
 git show d68a1ef2 ./filename
 ```
 
-## branch
+## 分支 - branch
 
-- `git branch -a` : 查看所有分支
+```bash
+# 查看所有分支
+git branch -a
 
-- `git branch` : 查看本地分支
+# 查看本地分支
+git branch
 
-- `git branch -r` : 查看远程分支
+# 查看远程分支
+git branch -r
 
-- `git branch <name>` : 创建分支
+# 创建分支
+git branch <name>
 
-- `git branch --orphan` : 创建空分支
+# 创建空分支
+git branch --orphan
 
-- `git checkout <name>` : 切换分支
+# 切换分支
+git checkout <name>
 
-- `git checkout -` : 切换到上一分支
+# 切换到上一分支
+git checkout -
 
-- `git branch -m <name>` : 重命名当前分支
+# 重命名当前分支
+git branch -m <name>
 
-- 创建并切换分支
+# 创建并切换分支
+git checkout -b <name>
 
-  ```bash
-  git checkout -b <name>
-  # ===
-  git branch <name>
-  git checkout <name>
-  ```
+# 合并 <name> 分支到当前分支
+git merge <name>
 
-- `git merge <name>` : 合并 <name> 分支到当前分支
+# 合并 <name> 分支到 <target> 分支
+git merge <name> <target>
 
-- `git merge <name> <target>` : 合并 <name> 分支到 <target> 分支
+# 删除分支
+git branch -d <name>
 
-- 删除分支：
+# 强制删除
+git branch -D <name>
 
-  `$ git branch -d <name>` : 被删除的分支没有合并时，需强制删除
 
-  `$ git branch -D <name>` : 强制删除
+# 删除远程分支
+git branch -d -r origin/<name>
+git push origin :<name>
+```
 
-  ```bash
-  # 删除远程分支
-  git branch -d -r origin/<name>
-  git push origin :<name>
-  ```
+## 标签 - tag
 
-## tag
+> 标签就像是版本库的快照，实质上它就是指向某个 commit 的指针
 
-> Git 的标签就像是版本库的快照，实质上它就是指向某个 commit 的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。
-> 作用在于将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。
+```bash
+# 创建一个新标签，标签默认为 HEAD，也可以指定一个 commit id
+git tag <tag_name>
+git tag <tag_name> <commit_id>
 
-- `$ git tag <tag_name>` : 创建一个新标签
+# 查看本地所有标签
+git tag
 
-  - 标签默认为 HEAD，也可以指定一个 commit id
+# 查看远程所有标签
+git ls-remote --tags origin
 
-- `$ git tag` : 查看本地所有标签
+# 查看标签详细信息
+git show <tag_name>
 
-- `$ git ls-remote --tags origin` : 查看远程所有标签
+# 指定标签信息，`-a` 指定标签名， `-m` 指定说明文字
+git tag -a <tag_name> -m 'msg'
 
-- `$ git show <tag_name>` 查看标签详细信息
+# 用 PGP 签名标签，`-s` 用私钥签名一个标签
+git tag -s <tag_name> -m 'msg'
 
-- `$ git tag -a <tag_name> <commit_id>` : 新增 tag 对应某个 commit
+# 推送一个本地标签
+git push origin <tag_name>
 
-- `$ git tag -a <tag_name> -m 'msg'` : 指定标签信息，`-a` 指定标签名， `-m` 指定说明文字
+# 推送全部未推送过的本地标签
+git push origin --tags
 
-- `$ git tag -s <tag_name> -m 'msg'` : 用 PGP 签名标签，`-s` 用私钥签名一个标签
+# 删除一个本地标签
+git tag -d <tag_name>
 
-- `$ git push origin <tag_name>` : 推送一个本地标签
+# 删除远程标签
+git push origin --delete <tag_name>
 
-- `$ git push origin --tags` : 推送全部未推送过的本地标签
+# 推送分支和标签，等效于 git push && git push --tags
+git push --follow-tags
+```
 
-- `$ git tag -d <tag_name>` : 删除一个本地标签
+## 回滚 - reset
 
-- `$ git push origin --delete <tag_name>` : 删除远程标签
+```bash
+# 回滚上一个版本，`HEAD`表示当前版本，`HEAD^^` 表示上上个版本，也可以用类似于 `HEAD~3` 来表示要回退到哪一个版本，`--hard` 撤销 commit，并且把修改同时撤销
+git reset --hard HEAD^
 
-- 推送分支和标签
 
-  ```bash
-  $ git push && git push --tags
-  # ===
-  $ git push --follow-tags
-  ```
+# 回滚到指定 commit
+git reset --hard e6d8ce4
 
-## reset
+# 回滚之后不会显示在 log，可以通过此查询回滚的版本号，（记录所有操作）
+git reflog
+```
 
-- `$ git log` : 显示从最近到最远的提交日志
+## 恢复 - checkout
 
-  - **按 Q, 退出 log**
+```bash
+# 将当前版本库中的内容替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”
+git checkout -- .
 
-- `$ git log --pretty=oneline` : 显示简要版的提交日志
+# 将已经添加到暂存区的文件撤销
+git reset HEAD ./filename
 
-- `$ git reset --hard HEAD^` : 回滚上一个版本，`HEAD`表示当前版本，`HEAD^^` 表示上上个版本，也可以用类似于 `HEAD~3` 来表示要回退到哪一个版本，`--hard` 撤销 commit，并且把修改同时撤销
+# 丢弃工作区中的修改，恢复某个文件到当前版本库中的状态
+git checkout -- ./filename
+```
 
-- `$ git reset --hard e6d8ce4` : 后面的数字是`commit id`，此方法可以随意跳转
+## 隐藏 - stash
 
-- `$ git push -f` : 强制推送到远程分支
+```bash
+# 将当前工作区修改文件“储藏”起来
+git stash
 
-  - 注意：本地分支回滚后，版本将落后远程分支，必须使用强制推送覆盖远程分支，否则无法推送到远程分支
+# 查看被储藏起来的项目
+git stash list
 
-- `$ git reflog` : 记录所有操作，可以通过此查询版本号
+# 恢复被储藏项目
+git stash apply
+# 删除 stash 内容
+git stash drop
 
-### checkout
+# 恢复的同时把 stash 内容也删除
+git stash pop
 
-> `$ git checkout -- .` : 将当前版本库中的内容替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”
+# 恢复指定的 stash
+git stash apply stash@{0}
+```
 
-- `$ git checkout -- ./filename` : 丢弃工作区中的修改，恢复某个文件到当前版本库中的状态
+## 克隆 - clone
 
-- `$ git reset HEAD ./filename` : 将已经添加到暂存区的文件撤销
+```bash
+# 拉取远程仓库，支持 git:// (ssh), <https://> 等协议
+git clone <url>
 
-## stash
+# 仓库太大，拉取最近的一个 revision
+git clone <url> --depth=1
 
-- `$ git stash` : 将当前工作区修改文件“储藏”起来，然后创建新的分支，修复 bug 合并，等 BUG 修复之后恢复现场继续工作
+# 克隆某个分支
+git clone -b dev <url>
 
-- `$ git stash list` : 查看被储藏起来的项目
+# 递归克隆，如果有 `submodule` 一并克隆
+git clone --recursive <url>
 
-- 恢复被储藏项目的两种方法：
+# 继续拉取历史版本
+git fetch --unshallow
+```
 
-  - `$ git stash apply` : 恢复后，stash 内容并不删除，需要用 `$ git stash drop` 来删除
+## 推送 - push
 
-  - `$ git stash pop` : 恢复的同时把 stash 内容也删除
+```bash
+# 远程已有 remote_branch 分支，并且已经关联本地分支 local_branch
+git push
 
-- 可以多次 stash，恢复的时候，先用 `git stash list` 查看，然后恢复指定的 stash，用命令：`$ git stash apply stash@{0}`
+# 强制推送到远程分支
+git push -f
 
-## clone
+# 远程已有 remote_branch 分支但未关联本地分支 local_branch， -u 首次推送
+git push -u origin/remote_branch
 
-- `git clone <url>` : 拉取远程仓库
+# 远程没有 remote_branch 分支，并且没有关联本地分支 local_branch
+git push origin local_branch:remote_branch
+```
 
-  - 支持 git:// (ssh), <https://> 等协议
+### 推送到远程分支
 
-- `git clone <url> --depth=1` : 仓库太大，拉取最近的一个 revision
-  - `git clone -b dev <url>` : 克隆某个分支
-  - `git clone --recursive <url>` : 递归克隆，如果有 `submodule` 一并克隆
-  - `git fetch --unshallow` : 继续拉取历史版本
+1. `git push origin branch-name`，如果推送失败，先用 `git pull` 拉取并合并
 
-## push
+2. 如果合并有冲突，则解决冲突，并在本地提交
 
-- `git push` : 远程已有 remote_branch 分支，并且已经关联本地分支 local_branch
-
-- `git push -u origin/remote_branch` : 远程已有 remote_branch 分支但未关联本地分支 local_branch
-
-- `git push origin local_branch:remote_branch` : 远程没有 remote_branch 分支，并且没有关联本地分支 local_branch
-
-- `git push --follow-tags` : 和 `tag` 一起提交
-
-## remote
-
-- `$ git remote add origin <url>` : 关联远程仓库（第一次推送 加参数 `-u`）
-
-- `$ git remote -v` : 查看远程库信息
-
-- `git checkout -b branch-name origin/branch-name` : 拉取远程仓库分支
-
-  ```bash
-  # 拉取，不进行合并
-  git fetch origin master
-
-  git pull
-  # ===
-  git fetch && git merge
-
-  git pull origin remove_branch:local_branch
-  ```
-
-- 推送到远程分支
-
-  1. `$ git push origin branch-name`，如果推送失败，先用 `$ git pull` 拉取并合并
-
-  2. 如果合并有冲突，则解决冲突，并在本地提交
-
-  3. 没有冲突或者解决掉冲突后，再用 `git push origin branch-name` 推送就能成功！
+3. 没有冲突或者解决掉冲突后，再用 `git push origin branch-name` 推送就能成功！
 
 **如果 `git pull` 提示 "no tracking information" , 则说明本地分支和远程分支的链接关系没有创建，用命令 `git branch --set-upstream branch-name origin/branch-name`**
 
-## ignore
-
-- `$ git add -f <name>` : `-f` 将 `.gitignore` 文件强制添加到仓库
-
-- `$ git check-ignore` : 检查文件是否符合 `.gitignore` 规则
-
-  ```bash
-  $ git check-ignore -v node_modules
-  .gitignore:40:node_modules/     node_modules
-  ```
-
-## remove
-
-- `$ rm file` : 删除文件
-
-- `$ git add file` : 将删除文件添加到暂存区
-
-- `$ git rm file` : 删除文件，并添加到暂存区
+## 远程 - remote
 
 ```bash
-$ rm file
-$ git add file
-# ===
-$ git rm file
+# 关联远程仓库
+git remote add origin <url>
+
+# 查看远程库信息
+git remote -v
+
+# 拉取远程仓库分支
+git checkout -b branch-name origin/branch-name
+
+# 拉取，不进行合并
+git fetch origin master
+
+# 等效于 git fetch && git merge
+git pull
+git pull origin remove_branch:local_branch
 ```
 
-## submodule
+## 忽略 - ignore
+
+```bash
+# -f 将 .gitignore 文件强制添加到仓库
+git add -f <name>
+
+# 检查文件是否符合 `.gitignore` 规则
+git check-ignore
+
+git check-ignore -v node_modules
+.gitignore:40:node_modules/     node_modules
+```
+
+## 删除 - remove
+
+```bash
+# 删除文件，并添加到暂存区，等效于 rm file && git add file
+git rm file
+```
+
+## 子模块 - submodule
 
 **子模块的操作默认都是 master 分支**
 
