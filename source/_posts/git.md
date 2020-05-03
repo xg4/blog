@@ -12,6 +12,7 @@ tags: git
   - [alias](#alias)
   - [log](#log)
 - [initial](#initial)
+- [diff](#diff)
 - [branch](#branch)
 - [tag](#tag)
 - [reset](#reset)
@@ -23,17 +24,17 @@ tags: git
 - [ignore](#ignore)
 - [remove](#remove)
 - [submodule](#submodule)
-  - [添加子模块](#%E6%B7%BB%E5%8A%A0%E5%AD%90%E6%A8%A1%E5%9D%97)
-  - [查看子模块](#%E6%9F%A5%E7%9C%8B%E5%AD%90%E6%A8%A1%E5%9D%97)
-  - [更新子模块](#%E6%9B%B4%E6%96%B0%E5%AD%90%E6%A8%A1%E5%9D%97)
-  - [克隆项目及子模块](#%E5%85%8B%E9%9A%86%E9%A1%B9%E7%9B%AE%E5%8F%8A%E5%AD%90%E6%A8%A1%E5%9D%97)
-  - [修改子模块](#%E4%BF%AE%E6%94%B9%E5%AD%90%E6%A8%A1%E5%9D%97)
-  - [删除子模块](#%E5%88%A0%E9%99%A4%E5%AD%90%E6%A8%A1%E5%9D%97)
+  - [添加子模块](#%e6%b7%bb%e5%8a%a0%e5%ad%90%e6%a8%a1%e5%9d%97)
+  - [查看子模块](#%e6%9f%a5%e7%9c%8b%e5%ad%90%e6%a8%a1%e5%9d%97)
+  - [更新子模块](#%e6%9b%b4%e6%96%b0%e5%ad%90%e6%a8%a1%e5%9d%97)
+  - [克隆项目及子模块](#%e5%85%8b%e9%9a%86%e9%a1%b9%e7%9b%ae%e5%8f%8a%e5%ad%90%e6%a8%a1%e5%9d%97)
+  - [修改子模块](#%e4%bf%ae%e6%94%b9%e5%ad%90%e6%a8%a1%e5%9d%97)
+  - [删除子模块](#%e5%88%a0%e9%99%a4%e5%ad%90%e6%a8%a1%e5%9d%97)
 
 ## ssh
 
 ```bash
-$ ssh-keygen -t rsa -C "xingor4@gmail.com"
+ssh-keygen -t rsa -C "xingor4@gmail.com"
 ```
 
 - 用户主目录下找到 `.ssh` 目录 (`~/.ssh`)，id_rsa 和 id_rsa.pub 两个文件
@@ -47,63 +48,108 @@ $ ssh-keygen -t rsa -C "xingor4@gmail.com"
 ## config
 
 ```bash
-$ git config --global user.name "xg4"
-$ git config --global user.email "xingor4@gmail.com"
+# 查看配置列表
+
+git config -l
+
+git config --global user.name "xg4"
+git config --global user.email "xingor4@gmail.com"
 ```
 
 ### alias
 
 ```bash
-$ git config --global alias.st status
-$ git config --global alias.ck checkout
-$ git config --global alias.cm commit
-$ git config --global alias.br branch
+git config --global alias.st status
+
+git config --global alias.ck checkout
+
+git config --global alias.cm commit
+
+git config --global alias.br branch
 ```
 
 ### log
 
 ```bash
+# 查看完整历史提交记录
+git log
+
 # 显示最后一次提交信息
-$ git config --global alias.last 'log -1'
+git config --global alias.last 'log -1'
 
 # format log
-$ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+# 列出提交者贡献数量
+git shortlog -sn
+
+# 查看分支合并图
+git log --graph
 ```
 
 ## initial
 
-- `$ git init` : 初始化 git 仓库
+- `git init` : 初始化 git 仓库
 
-- `$ git add <filename>` : 添加文件到暂存区
+- `git add <filename>` : 添加文件到暂存区
 
-- `$ git add .` : 递归添加整个目录到暂存区
+- `git add .` : 递归添加整个目录到暂存区
 
-- `$ git commit -m 'msg'` : 提交暂存区内容到仓库
+- `git commit -m 'msg'` : 提交暂存区内容到仓库
 
-- `$ git status` : 查看工作区的状态
+- `git commit -v` : 提交显示 diff 变化
 
-- `$ git diff` : 查看修改内容，比较差异
+- `git status` : 查看工作区的状态
+
+- `git diff` : 查看修改内容，比较差异
+
+## diff
+
+```bash
+# 查看所有文件改动
+git diff
+
+# 查看具体文件的改动
+git diff ./filename
+
+# 查看某个版本的改动
+git diff d68a1ef2
+
+# 查看某个文件的历史修改记录
+git log ./filename
+git show d68a1ef2 ./filename
+```
 
 ## branch
 
-- `$ git branch` : 查看分支
+- `git branch -a` : 查看所有分支
 
-- `$ git branch <name>` : 创建分支
+- `git branch` : 查看本地分支
 
-- `$ git branch --orphan` : 创建空分支
+- `git branch -r` : 查看远程分支
 
-- `$ git checkout <name>` : 切换分支
+- `git branch <name>` : 创建分支
+
+- `git branch --orphan` : 创建空分支
+
+- `git checkout <name>` : 切换分支
+
+- `git checkout -` : 切换到上一分支
+
+- `git branch -m <name>` : 重命名当前分支
 
 - 创建并切换分支
 
   ```bash
-  $ git checkout -b <name>
+  git checkout -b <name>
   # ===
-  $ git branch <name>
-  $ git checkout <name>
+  git branch <name>
+  git checkout <name>
   ```
 
-- `$ git merge <name>` : 合并 <name> 分支到当前分支
+- `git merge <name>` : 合并 <name> 分支到当前分支
+
+- `git merge <name> <target>` : 合并 <name> 分支到 <target> 分支
 
 - 删除分支：
 
@@ -111,32 +157,40 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 
   `$ git branch -D <name>` : 强制删除
 
-- `$ git log --graph` : 查看分支合并图
+  ```bash
+  # 删除远程分支
+  git branch -d -r origin/<name>
+  git push origin :<name>
+  ```
 
 ## tag
 
-> Git 的标签就像是版本库的快照，实质上它就是指向某个 commit 的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。  
+> Git 的标签就像是版本库的快照，实质上它就是指向某个 commit 的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。
 > 作用在于将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。
 
-- `$ git tag <name>` : 创建一个新标签
+- `$ git tag <tag_name>` : 创建一个新标签
 
   - 标签默认为 HEAD，也可以指定一个 commit id
 
-- `$ git tag` : 查看所有标签
+- `$ git tag` : 查看本地所有标签
 
-  - 标签不是按时间顺序列出，而是按字母排序的，用 `$ git show <name>` 查看标签信息
+- `$ git ls-remote --tags origin` : 查看远程所有标签
 
-- `$ git tag -a <name> -m 'msg'` : 指定标签信息，`-a` 指定标签名， `-m` 指定说明文字
+- `$ git show <tag_name>` 查看标签详细信息
 
-- `$ git tag -s <name> -m 'msg'` : 用 PGP 签名标签，`-s` 用私钥签名一个标签
+- `$ git tag -a <tag_name> <commit_id>` : 新增 tag 对应某个 commit
 
-- `$ git push origin <name>` : 推送一个本地标签
+- `$ git tag -a <tag_name> -m 'msg'` : 指定标签信息，`-a` 指定标签名， `-m` 指定说明文字
+
+- `$ git tag -s <tag_name> -m 'msg'` : 用 PGP 签名标签，`-s` 用私钥签名一个标签
+
+- `$ git push origin <tag_name>` : 推送一个本地标签
 
 - `$ git push origin --tags` : 推送全部未推送过的本地标签
 
-- `$ git tag -d <name>` : 删除一个本地标签
+- `$ git tag -d <tag_name>` : 删除一个本地标签
 
-- `$ git push origin :refs/tags/<name>` : 删除远程标签
+- `$ git push origin --delete <tag_name>` : 删除远程标签
 
 - 推送分支和标签
 
@@ -154,9 +208,9 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 
 - `$ git log --pretty=oneline` : 显示简要版的提交日志
 
-- `$ git reset --hard HEAD^` : 返回上一个版本，`HEAD`表示当前版本，`HEAD^^` 表示上上个版本，也可以用类似于 `HEAD~3` 来表示要回退到哪一个版本
+- `$ git reset --hard HEAD^` : 回滚上一个版本，`HEAD`表示当前版本，`HEAD^^` 表示上上个版本，也可以用类似于 `HEAD~3` 来表示要回退到哪一个版本，`--hard` 撤销 commit，并且把修改同时撤销
 
-- `$ git reset --hard 3628164` : 后面的数字是版本号，此方法可以随意跳转
+- `$ git reset --hard e6d8ce4` : 后面的数字是`commit id`，此方法可以随意跳转
 
 - `$ git push -f` : 强制推送到远程分支
 
@@ -168,9 +222,9 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 
 > `$ git checkout -- .` : 将当前版本库中的内容替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”
 
-- `$ git checkout -- file` : 丢弃工作区中的修改，恢复某个文件到当前版本库中的状态
+- `$ git checkout -- ./filename` : 丢弃工作区中的修改，恢复某个文件到当前版本库中的状态
 
-- `$ git reset HEAD file && git checkout -- file` : 将已经添加到暂存区的文件撤销，并恢复到当前版本库中的状态
+- `$ git reset HEAD ./filename` : 将已经添加到暂存区的文件撤销
 
 ## stash
 
@@ -188,20 +242,24 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 
 ## clone
 
-- `$ git clone <url>` : 拉取远程仓库
+- `git clone <url>` : 拉取远程仓库
 
-  - 支持 git:// (ssh), https:// 等协议
+  - 支持 git:// (ssh), <https://> 等协议
 
-- `$ git clone <url> --depth=1` : 仓库太大，拉取最近的一个 revision
-  - `$ git fetch --unshallow` : 继续拉取历史版本
+- `git clone <url> --depth=1` : 仓库太大，拉取最近的一个 revision
+  - `git clone -b dev <url>` : 克隆某个分支
+  - `git clone --recursive <url>` : 递归克隆，如果有 `submodule` 一并克隆
+  - `git fetch --unshallow` : 继续拉取历史版本
 
 ## push
 
-- `$ git push` : 远程已有 remote_branch 分支，并且已经关联本地分支 local_branch
+- `git push` : 远程已有 remote_branch 分支，并且已经关联本地分支 local_branch
 
-- `$ git push -u origin/remote_branch` : 远程已有 remote_branch 分支但未关联本地分支 local_branch
+- `git push -u origin/remote_branch` : 远程已有 remote_branch 分支但未关联本地分支 local_branch
 
-- `$ git push origin local_branch:remote_branch` : 远程没有 remote_branch 分支，并且没有关联本地分支 local_branch
+- `git push origin local_branch:remote_branch` : 远程没有 remote_branch 分支，并且没有关联本地分支 local_branch
+
+- `git push --follow-tags` : 和 `tag` 一起提交
 
 ## remote
 
@@ -210,6 +268,17 @@ $ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Cre
 - `$ git remote -v` : 查看远程库信息
 
 - `git checkout -b branch-name origin/branch-name` : 拉取远程仓库分支
+
+  ```bash
+  # 拉取，不进行合并
+  git fetch origin master
+
+  git pull
+  # ===
+  git fetch && git merge
+
+  git pull origin remove_branch:local_branch
+  ```
 
 - 推送到远程分支
 
@@ -254,8 +323,8 @@ $ git rm file
 - 更换子模块分支
 
 ```bash
-$ git config -f .gitmodules submodule.<submodule name>.branch dev
-$ git submodule update --remote
+git config -f .gitmodules submodule.<submodule name>.branch dev
+git submodule update --remote
 ```
 
 `.gitmodules` 加了 `-f` 参数，修改提交后对所有用户有效
@@ -263,7 +332,7 @@ $ git submodule update --remote
 ### 添加子模块
 
 ```bash
-$ git submodule add <git repo> themes/next
+git submodule add <git repo> themes/next
 ```
 
 添加子模块之后运行 `git status`， 可以看到目录有增加一个文件 `.gitmodules`，用来保存子模块的信息
@@ -293,13 +362,13 @@ c2f33fc76b500770e266c1c16f028807967cd121 themes/next (v7.1.1-4-gc2f33fc)
 - 更新子模块到最新版本
 
   ```bash
-  $ git submodule update
+  git submodule update
   ```
 
 - 更新子模块为远程仓库的最新版本
 
   ```bash
-  $ git submodule update --remote
+  git submodule update --remote
   ```
 
 ### 克隆项目及子模块
@@ -322,7 +391,7 @@ c2f33fc76b500770e266c1c16f028807967cd121 themes/next (v7.1.1-4-gc2f33fc)
 2. 递归克隆整个项目
 
    ```bash
-   $ git clone https://github.com/xg4/blog --recursive
+   git clone https://github.com/xg4/blog --recursive
    ```
 
 ### 修改子模块
@@ -330,9 +399,9 @@ c2f33fc76b500770e266c1c16f028807967cd121 themes/next (v7.1.1-4-gc2f33fc)
 在子模块中修改文件后，直接提交到远程仓库
 
 ```bash
-$ git add .
-$ git commit -m 'update'
-$ git push origin HEAD:master
+git add .
+git commit -m 'update'
+git push origin HEAD:master
 ```
 
 ### 删除子模块
@@ -364,5 +433,5 @@ $ git push origin HEAD:master
 4. 删除 `.git` 文件夹中的相关子模块文件
 
    ```bash
-   $ rm -rf .git/modules/theme/next
+   rm -rf .git/modules/theme/next
    ```
