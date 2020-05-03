@@ -36,8 +36,8 @@
     ]
   },
   "dependencies": {
-    "hexo": "^3.9.0",
-    "hexo-deployer-git": "^2.0.0",
+    "hexo": "^4.2.0",
+    "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-index": "^1.0.0",
@@ -48,9 +48,9 @@
     "hexo-server": "^1.0.0"
   },
   "devDependencies": {
-    "husky": "^3.0.9",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2"
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "prettier": "^2.0.5"
   },
   "hexo": {
     "version": "3.9.0"

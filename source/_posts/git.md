@@ -4,34 +4,6 @@ date: 2018-08-13 22:42:20
 tags: git
 ---
 
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [ssh-keygen](#ssh-keygen)
-- [配置 - config](#%e9%85%8d%e7%bd%ae---config)
-- [别名 - alias](#%e5%88%ab%e5%90%8d---alias)
-- [克隆 - clone](#%e5%85%8b%e9%9a%86---clone)
-- [初始化 - initial](#%e5%88%9d%e5%a7%8b%e5%8c%96---initial)
-- [远程 - remote](#%e8%bf%9c%e7%a8%8b---remote)
-- [推送 - push](#%e6%8e%a8%e9%80%81---push)
-  - [推送到远程分支](#%e6%8e%a8%e9%80%81%e5%88%b0%e8%bf%9c%e7%a8%8b%e5%88%86%e6%94%af)
-- [日志 - log](#%e6%97%a5%e5%bf%97---log)
-- [比较 - diff](#%e6%af%94%e8%be%83---diff)
-- [分支 - branch](#%e5%88%86%e6%94%af---branch)
-- [标签 - tag](#%e6%a0%87%e7%ad%be---tag)
-- [回滚 - reset](#%e5%9b%9e%e6%bb%9a---reset)
-- [恢复 - checkout](#%e6%81%a2%e5%a4%8d---checkout)
-- [暂存 - stash](#%e6%9a%82%e5%ad%98---stash)
-- [忽略 - ignore](#%e5%bf%bd%e7%95%a5---ignore)
-- [删除 - remove](#%e5%88%a0%e9%99%a4---remove)
-- [子模块 - submodule](#%e5%ad%90%e6%a8%a1%e5%9d%97---submodule)
-  - [添加子模块](#%e6%b7%bb%e5%8a%a0%e5%ad%90%e6%a8%a1%e5%9d%97)
-  - [查看子模块](#%e6%9f%a5%e7%9c%8b%e5%ad%90%e6%a8%a1%e5%9d%97)
-  - [更新子模块](#%e6%9b%b4%e6%96%b0%e5%ad%90%e6%a8%a1%e5%9d%97)
-  - [克隆项目及子模块](#%e5%85%8b%e9%9a%86%e9%a1%b9%e7%9b%ae%e5%8f%8a%e5%ad%90%e6%a8%a1%e5%9d%97)
-  - [修改子模块](#%e4%bf%ae%e6%94%b9%e5%ad%90%e6%a8%a1%e5%9d%97)
-  - [删除子模块](#%e5%88%a0%e9%99%a4%e5%ad%90%e6%a8%a1%e5%9d%97)
-
 ## ssh-keygen
 
 ```bash
