@@ -5,7 +5,7 @@ module.exports = {
       name: `xg4`,
       summary: `I want to simplify the code.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Personal blog by xg4.`,
     siteUrl: `https://xg4.vercel.app/`,
     social: {
       twitter: `xingor4_`,
@@ -76,13 +76,13 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  custom_elements: [{ 'content:encoded': node.html }],
                 })
               })
             },
@@ -105,7 +105,7 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
+            output: '/rss.xml',
           },
         ],
       },
