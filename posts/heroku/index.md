@@ -1,7 +1,7 @@
 ---
 title: 通过 Heroku 部署 Node.js 应用
 date: '2018-09-05T05:42:11.000Z'
-excerpt: 使用 Heroku 提供的 Node.js 运行环境，以及免费的 MongoDB、Postgres 数据库
+description: 使用 Heroku 提供的 Node.js 运行环境，以及免费的 MongoDB、Postgres 数据库
 ---
 
 > [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction)
