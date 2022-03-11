@@ -1,14 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `Simple`,
+    title: `Landscape`,
     author: {
       name: `xg4`,
-      summary: `I want to simplify the code.`,
+      summary: `Peace and Love.`,
     },
     description: `Personal blog by xg4.`,
     siteUrl: `https://xg4.vercel.app/`,
     social: {
-      twitter: `xingor4_`,
       github: `xg4`,
     },
   },
@@ -76,13 +75,13 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
+              return allMarkdownRemark.nodes.map(node => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ 'content:encoded': node.html }],
+                  custom_elements: [{ "content:encoded": node.html }],
                 })
               })
             },
@@ -105,7 +104,8 @@ module.exports = {
                 }
               }
             `,
-            output: '/rss.xml',
+            output: "/rss.xml",
+            title: "Landscape RSS Feed",
           },
         ],
       },
@@ -113,17 +113,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Landscape`,
+        short_name: `Landscape`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        theme_color: `#10b981`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-gatsby-cloud`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

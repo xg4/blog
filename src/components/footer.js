@@ -9,20 +9,17 @@ const Footer = () => {
         </a>
       </div>
       <a
-        href="https://twitter.com/xingor4_"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        twitter
-      </a>{' '}
-      &bull;{' '}
-      <a
         href="https://github.com/xg4"
         target="_blank"
         rel="noopener noreferrer"
       >
         github
-      </a>{' '}
+      </a>
+      <div style={{ marginTop: 15 }}>
+        © {new Date().getFullYear()} xg4, Built with
+        {` `}
+        <a href="https://www.gatsbyjs.com">Gatsby</a>
+      </div>
     </footer>
   )
 }

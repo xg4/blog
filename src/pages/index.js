@@ -1,5 +1,6 @@
-import { graphql, Link } from 'gatsby'
 import * as React from 'react'
+import { Link, graphql } from 'gatsby'
+
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
@@ -7,6 +8,16 @@ import Seo from '../components/seo'
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+
+  if (posts.length === 0) {
+    return (
+      <Layout location={location} title={siteTitle}>
+        <Seo />
+        <Bio />
+        <p>当前无文章。</p>
+      </Layout>
+    )
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
