@@ -3,11 +3,12 @@ module.exports = {
     title: `Landscape`,
     author: {
       name: `xg4`,
-      summary: `Peace and Love.`,
+      summary: `Peace & Love.`,
     },
     description: `Personal blog by xg4.`,
     siteUrl: `https://xg4.vercel.app/`,
     social: {
+      twitter: 'xingor4_',
       github: `xg4`,
     },
   },
@@ -51,12 +52,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `G-3PNYC5H8WT`,
+      },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -75,13 +76,13 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
+              return allMarkdownRemark.nodes.map((node) => {
                 return Object.assign({}, node.frontmatter, {
                   description: node.excerpt,
                   date: node.frontmatter.date,
                   url: site.siteMetadata.siteUrl + node.fields.slug,
                   guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+                  custom_elements: [{ 'content:encoded': node.html }],
                 })
               })
             },
@@ -104,8 +105,8 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml",
-            title: "Landscape RSS Feed",
+            output: '/rss.xml',
+            title: 'Landscape RSS Feed',
           },
         ],
       },
