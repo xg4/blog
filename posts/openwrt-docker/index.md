@@ -1,5 +1,5 @@
 ---
-title: 在 Docker 中使用 openwrt 作为旁路由
+title: 在 Docker 中使用 openwrt
 date: '2021-04-08T14:10:00.000Z'
 description: 在 Docker 中方便快捷的启动或销毁 openwrt，并通过旁路由的方式使家中设备快捷连入互联网
 ---

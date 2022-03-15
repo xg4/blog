@@ -1,37 +1,8 @@
 ---
-title: 如何熟练的使用 Webpack 4.x
+title: Webpack 4.x 使用
 date: '2019-06-26T04:04:45.000Z'
 description: 基本配置示例，loaders、plugins 基本原理，以及优化配置
 ---
-
-## Table of Contents
-
-- [Table of Contents](#Table-of-Contents)
-- [loader](#loader)
-  - [路径](#%E8%B7%AF%E5%BE%84)
-  - [顺序](#%E9%A1%BA%E5%BA%8F)
-  - [Pitch loader](#Pitch-loader)
-  - [raw loader](#raw-loader)
-  - [loader context](#loader-context)
-  - [awesome](#awesome)
-- [plugin](#plugin)
-- [server](#server)
-  - [proxy](#proxy)
-  - [hook](#hook)
-  - [webpack-dev-middleware](#webpack-dev-middleware)
-- [全局变量](#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F)
-  - [expose-loader](#expose-loader)
-  - [Webpack.ProvidePlugin](#WebpackProvidePlugin)
-  - [externals](#externals)
-- [优化](#%E4%BC%98%E5%8C%96)
-  - [module.noParse](#modulenoParse)
-  - [Webpack.IgnorePlugin](#WebpackIgnorePlugin)
-  - [Webpack.DllPlugin](#WebpackDllPlugin)
-  - [happypack](#happypack)
-  - [Tree-Shaking](#Tree-Shaking)
-  - [SplitChunksPlugin](#SplitChunksPlugin)
-  - [dynamic imports](#dynamic-imports)
-  - [HMR - Hot Module Replacement](#HMR---Hot-Module-Replacement)
 
 核心概念
 
