@@ -36,7 +36,7 @@ const Seo = ({ description, lang, meta, title }) => {
         lang,
       }}
       title={title ? title : `${defaultTitle} — A blog by xg4`}
-      titleTemplate={defaultTitle ? `%s — ${defaultTitle}` : null}
+      titleTemplate={title ? `%s — ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
